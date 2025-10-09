@@ -13,6 +13,6 @@ async function getWeather() {
   console.log(data);
 }
 
-getWeather();
+// getWeather();
 
-//also add loading feature
+console.log(window.screen);

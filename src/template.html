@@ -4,6 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100&icon_names=favorite,home,search,settings"
+      rel="stylesheet"
+    />
   </head>
-  <body></body>
+  <body class="main-content">
+    <header class="header content-item">
+      <div class="search-wrapper">
+        <span class="search-icon material-symbols-outlined">search</span>
+        <input id="search-query" type="text" />
+      </div>
+      <button class="settings"></button>
+    </header>
+    <div class="main-information content-item">
+      <h1 class="current-city-title">City Name</h1>
+      <p class="temperature">55 C/F</p>
+      <h3 class="weather">Condition</h3>
+
+      <div class="h-l-container">
+        <h3 class="highs">H:00</h3>
+        <h3 class="lows">L:00</h3>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="weather-info-container content-item">
+        <div class="hourly-weather box"></div>
+
+        <div class="daily-weather box"></div>
+
+        <div class="air-quality box"></div>
+
+        <div class="weather-alert box"></div>
+
+        <div class="uv-index box"></div>
+
+        <div class="sunrise box"></div>
+
+        <div class="moonset box"></div>
+        <div class="severe-risk box"></div>
+
+        <div class="wind box"></div>
+        <div class="precip box"></div>
+        <div class="feels-like box"></div>
+        <div class="humidity box"></div>
+        <div class="visibility box"></div>
+        <div class="pressure box"></div>
+        <div class="averages box"></div>
+      </div>
+    </div>
+  </body>
 </html>

@@ -1,0 +1,256 @@
+:root {
+  --b: 0.2px solid rgb(0, 51, 255);
+  --r: 0.2px solid red;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+
+  /* border: var(--r); */
+}
+
+html {
+  height: 100vh;
+  /* border: var(--b); */
+}
+
+body {
+  height: 100%;
+  width: 100%;
+
+  display: grid;
+
+  grid-template-rows: 100px 220px 1fr;
+
+  /* border: var(--b); */
+}
+
+header {
+  border: var(--b);
+  display: flex;
+
+  align-items: center;
+}
+
+.main-information {
+  /* mask-image: linear-gradient(to bottom, black, transparent); */
+}
+
+.wrapper {
+  grid-row: 3 / 4;
+  border: 1px solid black;
+  padding-top: 20px;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+
+  /* mask-image: linear-gradient(to top, black 96%, transparent 100%); */
+  background-color: red;
+}
+
+.weather-info-container {
+  border: 1px solid pink;
+
+  justify-content: center;
+}
+.search-wrapper {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.search-icon {
+  position: absolute;
+  left: 30px;
+}
+
+.settings {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+#search-query {
+  width: 550px;
+  height: 30px;
+  border-style: none;
+  border-radius: 50px;
+  border: 1px solid black;
+
+  margin-left: 20px;
+}
+
+button {
+  height: 30px;
+  width: 30px;
+}
+
+.main-information {
+  grid-row: 2 / 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.h-l-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.temperature {
+  font-size: 50px;
+}
+
+.weather-info-container {
+  grid-template-columns: repeat(6, minmax(100px, 200px));
+  grid-template-rows: repeat(5, minmax(150px, 200px));
+
+  justify-content: center;
+  display: grid;
+  overflow: auto;
+
+  padding: 20px;
+  /*  "hourly-weather hourly-weather hourly-weather hourly-weather weather-alert weather-alert"
+    "daily-weather daily-weather wind wind weather-alert weather-alert"
+    "daily-weather daily-weather air-quality air-quality uv-index sunrise "
+    "daily-weather daily-weather moonset wind precip feels-like"
+    "daily-weather daily-weather humidity visibility pressure averages"; */
+
+  grid-template-areas:
+    "hourly-weather hourly-weather hourly-weather hourly-weather weather-alert weather-alert"
+    "daily-weather daily-weather wind wind weather-alert weather-alert"
+    "daily-weather daily-weather air-quality air-quality uv-index sunrise"
+    "daily-weather daily-weather severe-risk moonset precip feels-like"
+    "daily-weather daily-weather humidity visibility pressure averages";
+
+  gap: 20px;
+}
+
+.severe-risk {
+  grid-area: severe-risk;
+}
+.hourly-weather {
+  grid-area: hourly-weather;
+}
+
+.daily-weather {
+  grid-area: daily-weather;
+}
+
+.air-quality {
+  grid-area: air-quality;
+}
+
+.weather-alert {
+  grid-area: weather-alert;
+}
+
+.uv-index {
+  grid-area: uv-index;
+}
+
+.sunrise {
+  grid-area: sunrise;
+}
+
+.moonset {
+  grid-area: moonset;
+}
+
+.wind {
+  grid-area: wind;
+}
+
+.precip {
+  grid-area: precip;
+}
+
+.feels-like {
+  grid-area: feels-like;
+}
+
+.humidity {
+  grid-area: humidity;
+}
+
+.visibility {
+  grid-area: visibility;
+}
+
+.pressure {
+  grid-area: pressure;
+}
+
+.averages {
+  grid-area: averages;
+}
+
+.box {
+  border-radius: 15px;
+
+  z-index: 0;
+  border: 1px solid black;
+  display: flex;
+  /* background-color: green; */
+  /* background: linear-gradient(96deg, #51adff 39%, #1590c9 100%); */
+}
+
+.main-box::after {
+  /* background: linear-gradient(-89deg, #ffff 100%, #92c9ff 67%); */
+}
+
+body {
+  /* background: linear-gradient(
+    180deg,
+    rgba(47, 145, 244, 1) 0%,
+    rgba(108, 190, 241, 1) 98%
+  ); */
+}
+
+@media screen and (min-width: 920px) and (max-width: 1300px) {
+  .weather-info-container {
+    grid-template-columns: repeat(4, minmax(100px, 200px));
+    grid-template-rows: repeat(7, minmax(150px, 200px));
+
+    grid-template-areas:
+      "hourly-weather hourly-weather hourly-weather hourly-weather"
+      "daily-weather daily-weather weather-alert weather-alert"
+      "daily-weather daily-weather wind wind "
+      "daily-weather daily-weather uv-index uv-index"
+      "precip feels-like air-quality sunrise"
+      "humidity visibility pressure averages"
+      "severe-risk moonset . .";
+
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 0px) and (max-width: 920px) {
+  #search-query {
+    width: 300px;
+  }
+
+  .weather-info-container {
+    grid-template-columns: repeat(2, minmax(100px, 200px));
+    grid-auto-rows: 0px;
+    grid-auto-columns: 0px;
+    grid-template-rows: repeat(10, minmax(100px, 200px));
+
+    grid-template-areas:
+      "hourly-weather hourly-weather"
+      "daily-weather daily-weather"
+      "daily-weather daily-weather"
+      "wind wind"
+      "weather-alert sunrise"
+      "severe-risk moonset"
+      "precip feels-like"
+      "air-quality uv-index"
+      "humidity visibility"
+      "pressure averages";
+
+    gap: 20px;
+  }
+}

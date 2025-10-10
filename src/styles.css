@@ -1,17 +1,22 @@
+@import url("https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
 :root {
   --b: 0.2px solid rgb(0, 51, 255);
-  --r: 0.2px solid red;
+  --r: 0.2px solid rgba(255, 0, 0, 0.123);
+  --move: 60px;
 }
 
 * {
   margin: 0;
   padding: 0;
 
+  font-family: "Roboto";
+
   /* border: var(--r); */
 }
 
 html {
-  height: 100vh;
+  height: min-content;
   /* border: var(--b); */
 }
 
@@ -33,13 +38,37 @@ header {
   align-items: center;
 }
 
+h1 {
+}
+
+h2 {
+  font-size: 40px;
+}
+h3 {
+  font-size: 20px;
+}
+h4 {
+  font-size: 16px;
+
+  font-weight: 350;
+}
+
+h5 {
+  font-size: 14px;
+}
+
+.hour-title,
+.hour-temp {
+  font-weight: 500;
+}
+
 .main-information {
   /* mask-image: linear-gradient(to bottom, black, transparent); */
 }
 
 .wrapper {
   grid-row: 3 / 4;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   padding-top: 20px;
   display: flex;
   width: 100%;
@@ -47,23 +76,24 @@ header {
   justify-content: center;
 
   /* mask-image: linear-gradient(to top, black 96%, transparent 100%); */
-  background-color: red;
+  /* background-color: red; */
 }
 
-.weather-info-container {
-  border: 1px solid pink;
-
-  justify-content: center;
-}
 .search-wrapper {
   display: flex;
   align-items: center;
-  position: relative;
+  width: 550px;
+  height: 30px;
+  border-style: none;
+  border-radius: 50px;
+  border: 1px solid black;
+
+  margin-left: 20px;
+  transition: all 1s;
 }
 
 .search-icon {
-  position: absolute;
-  left: 30px;
+  margin-left: 10px;
 }
 
 .settings {
@@ -72,13 +102,15 @@ header {
 }
 
 #search-query {
-  width: 550px;
-  height: 30px;
-  border-style: none;
-  border-radius: 50px;
-  border: 1px solid black;
+  margin-left: 5px;
+  height: 90%;
+  width: 90%;
 
-  margin-left: 20px;
+  border-style: none;
+}
+
+input:focus {
+  outline: none;
 }
 
 button {
@@ -113,20 +145,136 @@ button {
   overflow: auto;
 
   padding: 20px;
-  /*  "hourly-weather hourly-weather hourly-weather hourly-weather weather-alert weather-alert"
-    "daily-weather daily-weather wind wind weather-alert weather-alert"
-    "daily-weather daily-weather air-quality air-quality uv-index sunrise "
-    "daily-weather daily-weather moonset wind precip feels-like"
-    "daily-weather daily-weather humidity visibility pressure averages"; */
+  border: 1px solid pink;
+
+  justify-content: center;
 
   grid-template-areas:
     "hourly-weather hourly-weather hourly-weather hourly-weather weather-alert weather-alert"
     "daily-weather daily-weather wind wind weather-alert weather-alert"
     "daily-weather daily-weather air-quality air-quality uv-index sunrise"
-    "daily-weather daily-weather severe-risk moonset precip feels-like"
+    "daily-weather daily-weather severe-risk moon-phase precip feels-like"
     "daily-weather daily-weather humidity visibility pressure averages";
 
   gap: 20px;
+}
+
+/* General */
+
+.temp::after {
+  content: "°";
+}
+
+.box {
+  position: relative;
+  padding: 10px;
+
+  border-radius: 20px;
+
+  z-index: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  border: 1.3px solid black;
+  /* border-image: linear-gradient(96deg, #51adff 39%, #1590c9 100%); */
+  /* background-color: green; */
+  /* background: linear-gradient(to right, #e3e6e9 39%, #7cd6ff 100%); */
+}
+
+/* -------- HOURLY  */
+.hourly-container {
+  gap: 20px;
+  display: flex;
+
+  overflow-x: scroll;
+  height: 200px;
+
+  white-space: nowrap;
+  text-align: center;
+
+  justify-items: center;
+}
+
+.hour-temp {
+  margin-top: auto;
+}
+.hour-icon {
+  margin-top: auto;
+}
+
+.hourly-weather-title {
+  /* color: #c5f0ffc6; */
+}
+
+.hour-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  border-radius: 20px;
+
+  padding: 10px;
+  flex: 1;
+}
+
+/* -------- DAILY  */
+
+.daily-weather {
+  grid-area: daily-weather;
+}
+
+.daily-weather-title {
+}
+
+.daily-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.daily-item {
+  display: flex;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+.daily.line {
+  background-color: rgb(197, 197, 197);
+  justify-content: center;
+}
+
+.daily-colored.line {
+  position: absolute;
+  background: #fbff00;
+  background: linear-gradient(
+    90deg,
+    rgba(251, 255, 0, 1) 25%,
+    rgba(255, 191, 0, 1) 50%,
+    rgba(255, 61, 61, 1) 75%
+  );
+
+  align-self: center;
+  width: 10px;
+
+  border: none;
+}
+
+.daily-min-max {
+  display: flex;
+  align-items: center;
+}
+
+.daily-min-temp {
+  margin-right: auto;
+}
+
+.daily-max-temp {
+  margin-left: auto;
+}
+
+.daily-item > * {
+  flex: 1;
 }
 
 .severe-risk {
@@ -136,32 +284,264 @@ button {
   grid-area: hourly-weather;
 }
 
-.daily-weather {
-  grid-area: daily-weather;
-}
+/* AIR QUALITY */
 
 .air-quality {
   grid-area: air-quality;
+}
+
+.line {
+  position: relative;
+  width: 100%;
+  height: 5px;
+
+  border-radius: 25px;
+
+  display: flex;
+  align-items: center;
+}
+
+.circle {
+  width: 5px;
+  height: 5px;
+  position: absolute;
+  top: -1.3px;
+  transform: translateX(0px);
+  border-radius: 100px;
+  border: 1.5px solid black;
+  background-color: white;
+}
+
+.air-quality .line {
+  background: #1eff00;
+  background: #00ffb7;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 255, 183, 1) 0%,
+    rgba(251, 255, 0, 1) 13%,
+    rgba(255, 191, 0, 1) 25%,
+    rgba(255, 61, 61, 1) 38%,
+    rgba(213, 53, 121, 1) 47%,
+    rgba(161, 45, 196, 1) 61%,
+    rgba(162, 2, 2, 1) 88%,
+    rgba(112, 0, 0, 1) 100%
+  );
 }
 
 .weather-alert {
   grid-area: weather-alert;
 }
 
+/* UV INDEX */
+
 .uv-index {
   grid-area: uv-index;
+}
+
+.meter {
+  display: flex;
+  align-items: center;
+  height: 45px;
+}
+
+.uv-index .line {
+  background: #1eff00;
+  background: linear-gradient(
+    90deg,
+    rgba(30, 255, 0, 1) 0%,
+    rgba(251, 255, 0, 1) 20%,
+    rgba(255, 191, 0, 1) 40%,
+    rgba(255, 61, 61, 1) 60%,
+    rgba(128, 4, 199, 1) 100%,
+    rgba(199, 4, 180, 1) 80%
+  );
 }
 
 .sunrise {
   grid-area: sunrise;
 }
 
-.moonset {
-  grid-area: moonset;
+.moon-phase {
+  grid-area: moon-phase;
 }
+
+/* WIND */
 
 .wind {
   grid-area: wind;
+}
+
+.wind-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wind-wrapper {
+  justify-self: center;
+}
+
+.wind-container > * {
+  flex: 1;
+}
+
+.wind-item {
+  display: flex;
+  padding: 10px 0px;
+}
+
+.wind-item ~ * {
+  border-top: 1px solid black;
+}
+
+.wind-number,
+.wind-gusts-number,
+.wind-dir-number {
+  margin-left: auto;
+}
+
+.wind-sub,
+.wind-gusts,
+.wind-dir {
+  margin-right: auto;
+}
+
+/* COMPASS */
+
+.wind-compass {
+  height: 100%;
+  border-color: green;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wind-circle {
+  position: relative;
+  height: 70px;
+  width: 70px;
+  border-radius: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 200;
+  background-color: white;
+}
+
+.south,
+.north,
+.west,
+.east {
+  position: absolute;
+  font-size: 10px;
+}
+
+.north {
+  transform: translateY(-55px);
+}
+.east {
+  transform: translateX(55px);
+}
+.west {
+  transform: translateX(-55px);
+}
+.south {
+  transform: translateY(55px);
+}
+
+.compass-line {
+  height: 7px;
+  width: 0.3px;
+  transform-origin: center;
+  background-color: rgba(128, 128, 128, 0.422);
+  position: absolute;
+
+  align-self: center;
+  border: none;
+}
+
+.compass-line.bold {
+  width: 1px;
+  background-color: rgba(128, 128, 128);
+}
+
+/* ARROW */
+
+.arrow,
+.arrow-line,
+.arrow-point,
+.arrow-point-left,
+.arrow-point-right {
+  z-index: -100;
+}
+
+.arrow {
+  position: absolute;
+  transform-origin: center;
+  transform: rotate(0deg);
+}
+
+.arrow-line {
+  position: relative;
+
+  width: 2px;
+  height: 100px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 25px;
+  background-color: rgb(0, 0, 0);
+}
+
+.arrow-point {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.arrow-point-right,
+.arrow-point-left {
+  position: absolute;
+  width: 2px;
+  height: 10px;
+  border-radius: 25px;
+  background-color: rgb(0, 0, 0);
+}
+
+.arrow-point-right {
+  transform: translateY(48px) translateX(3px) rotate(45deg);
+}
+
+.arrow-point-left {
+  transform: translateY(48px) translateX(-3px) rotate(-45deg);
+}
+
+.arrow-circle {
+  height: 6px;
+  width: 6px;
+  border-radius: 90px;
+  position: absolute;
+  transform: translateY(-48px);
+  background-color: rgb(0, 0, 0);
+}
+
+.test2 {
+  height: 10px;
+  width: 0.3px;
+  /* top: -25px; */
+
+  transform: rotate(90deg) translateY(40px);
+
+  transform-origin: center;
+
+  background-color: grey;
+  position: absolute;
+
+  align-self: center;
 }
 
 .precip {
@@ -188,18 +568,19 @@ button {
   grid-area: averages;
 }
 
-.box {
-  border-radius: 15px;
-
-  z-index: 0;
-  border: 1px solid black;
-  display: flex;
-  /* background-color: green; */
-  /* background: linear-gradient(96deg, #51adff 39%, #1590c9 100%); */
-}
-
-.main-box::after {
-  /* background: linear-gradient(-89deg, #ffff 100%, #92c9ff 67%); */
+.box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: inherit;
+  margin: 2px;
+  /* opacity: 0.3; */
+  /* background: linear-gradient(-185deg, #8ccfff 0%, #1592ff 59%, #0093d7 100%); */
+  /* box-shadow: inset 0px 0px 20px 2px #8ccfff; */
 }
 
 body {
@@ -219,18 +600,22 @@ body {
       "hourly-weather hourly-weather hourly-weather hourly-weather"
       "daily-weather daily-weather weather-alert weather-alert"
       "daily-weather daily-weather wind wind "
-      "daily-weather daily-weather uv-index uv-index"
-      "precip feels-like air-quality sunrise"
+      "daily-weather daily-weather air-quality air-quality "
+      "precip feels-like uv-index sunrise"
       "humidity visibility pressure averages"
-      "severe-risk moonset . .";
+      "severe-risk moon-phase . .";
 
     gap: 20px;
   }
 }
 
 @media screen and (min-width: 0px) and (max-width: 920px) {
-  #search-query {
+  .search-wrapper {
     width: 300px;
+  }
+
+  #search-query {
+    width: 80%;
   }
 
   .weather-info-container {
@@ -245,7 +630,7 @@ body {
       "daily-weather daily-weather"
       "wind wind"
       "weather-alert sunrise"
-      "severe-risk moonset"
+      "severe-risk moon-phase"
       "precip feels-like"
       "air-quality uv-index"
       "humidity visibility"

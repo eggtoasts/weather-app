@@ -6,6 +6,7 @@ import feelslike from "./components/feelslike";
 import wind from "./components/wind";
 import pressure from "./components/pressure";
 import visibility from "./components/visibility";
+import uvIndex from "./components/uvindex";
 
 export default function showDisplay(setting, currentCity) {
   //Main information (City name, temperature, etc...)
@@ -42,5 +43,8 @@ export default function showDisplay(setting, currentCity) {
   const vm = visibility(currentCity, setting);
   vm.update();
 
+  //Display UV Index
+  const uim = uvIndex(currentCity);
+  uim.update();
   //Display sunrise/sunset
 }

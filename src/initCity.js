@@ -39,6 +39,9 @@ export let initCity = function (query) {
   //Visibility
   const visibility = query.currentConditions.visibility;
 
+  //Moon Phase
+  const moonPhase = query.currentConditions.moonphase;
+
   //Uv index
   const uvIndex = query.currentConditions.uvindex;
 
@@ -84,6 +87,9 @@ export let initCity = function (query) {
 
   //Getters
 
+  const getMoonPhase = function () {
+    return moonPhase;
+  };
   const getAirQuality = function () {
     return airQuality;
   };
@@ -177,6 +183,7 @@ export let initCity = function (query) {
   };
 
   return {
+    getMoonPhase,
     getAirQuality,
     getName,
     getTemperature,

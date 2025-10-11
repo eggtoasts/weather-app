@@ -2,8 +2,9 @@ export let initCity = function (query) {
   //Later, find the weather condition of the current hour.
 
   console.log(query);
+
   //Main info
-  const name = query.address;
+  const name = query.resolvedAddress;
   const temperature = query.currentConditions.temp;
 
   const weatherCondition = query.days[0].conditions;

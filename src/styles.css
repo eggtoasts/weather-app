@@ -113,7 +113,7 @@ input:focus {
   outline: none;
 }
 
-button {
+button.settings {
   height: 30px;
   width: 30px;
 }
@@ -160,6 +160,10 @@ button {
 }
 
 /* General */
+
+.main-content {
+  position: relative;
+}
 
 .deg::after {
   content: "°";
@@ -655,6 +659,49 @@ body {
   ); */
 }
 
+/* DIALOG */
+
+.settings-dialog {
+  right: 60px;
+  top: 20px;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  height: 250px;
+  border-radius: 25px;
+  border: 1px solid black;
+
+  padding: 20px;
+
+  background-color: white;
+  /* align-items: center;
+  justify-content: center; */
+}
+
+.dialog-item {
+  display: flex;
+}
+.button-wrapper {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.button-wrapper button {
+  height: 30px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+.done-button {
+  margin-left: auto;
+
+  height: 30px;
+  width: 40px;
+  border-radius: 20px;
+}
+
 @media screen and (min-width: 920px) and (max-width: 1300px) {
   .weather-info-container {
     grid-template-columns: repeat(4, minmax(100px, 200px));
@@ -703,4 +750,10 @@ body {
 
     gap: 20px;
   }
+}
+
+/* hidden */
+
+.hidden {
+  display: none;
 }

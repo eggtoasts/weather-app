@@ -23,7 +23,7 @@
       </div>
 
       <button class="settings">
-        <span class="material-symbols-outlined"> settings </span>
+        <span class="material-symbols-outlined settingsForm"> settings </span>
       </button>
     </header>
     <div class="main-information content-item">
@@ -195,7 +195,7 @@
                 </div>
 
                 <h3 class="wind-circle-number">7</h3>
-                <h4>mph</h4>
+                <h4 class="wind-unit">mph</h4>
               </div>
             </div>
           </div>
@@ -254,6 +254,51 @@
       </div>
     </div>
 
-    <dialog class="settings-dialog"></dialog>
+    <div class="settings-dialog settingsForm hidden">
+      <h3>Units</h3>
+      <div class="dialog-item">
+        <h4 class="temperature-title">Temperature</h4>
+        <div class="button-wrapper">
+          <button class="celsius">C</button>
+          <button class="fahrenheit">F</button>
+        </div>
+      </div>
+
+      <h3 class="temperature-title">Other Units</h3>
+      <div class="dialog-item">
+        <h4>Wind</h4>
+        <div class="button-wrapper">
+          <button class="wind m">mp/h</button>
+          <button class="wind km">km/h</button>
+        </div>
+      </div>
+
+      <div class="dialog-item">
+        <h4>Precipitation</h4>
+
+        <div class="button-wrapper">
+          <button class="inches">in</button>
+          <button class="milimeters">mm</button>
+        </div>
+      </div>
+
+      <div class="dialog-item">
+        <h4>Pressure</h4>
+
+        <div class="button-wrapper">
+          <button class="pressure m">mp/h</button>
+          <button class="pressure km">km/h</button>
+        </div>
+      </div>
+
+      <div class="dialog-item">
+        <h4>Distance</h4>
+        <div class="button-wrapper">
+          <button>mi</button> <button>km</button>
+        </div>
+      </div>
+
+      <button class="done-button">Done</button>
+    </div>
   </body>
 </html>

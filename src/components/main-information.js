@@ -1,9 +1,10 @@
-export default function mainInformation(currentCity) {
+import { convertToCelsius } from "../helpers/convert";
+export default function mainInformation(currentCity, setting) {
   const cityName = document.querySelector(".current-city-title");
   const temperature = document.querySelector(".temperature");
   const weatherCondition = document.querySelector(".weather");
-  const highTemp = document.querySelector(".lows");
-  const lowTemp = document.querySelector(".highs");
+  const highTemp = document.querySelector(".lows.deg");
+  const lowTemp = document.querySelector(".highs.deg");
 
   const capitalizeName = function (name) {
     let nameSplit = name.split(" ");
@@ -18,8 +19,14 @@ export default function mainInformation(currentCity) {
   };
 
   const update = function () {
+    let temp = currentCity.getTemperature();
+    const unit = setting.getTemperatureUnit();
+
+    if (unit === "C") {
+      temp = convertToCelsius(temp);
+    }
     cityName.textContent = capitalizeName(currentCity.getName());
-    temperature.textContent = currentCity.getTemperature();
+    temperature.textContent = temp;
     weatherCondition.textContent = currentCity.getWeatherCondition();
     highTemp.textContent = currentCity.getHighTemperature();
     lowTemp.textContent = currentCity.getLowTemperature();

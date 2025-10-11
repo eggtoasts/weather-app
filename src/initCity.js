@@ -1,3 +1,6 @@
+import { Day } from "./classes/day";
+import { Hour } from "./classes/hour";
+
 export let initCity = function (query) {
   //Later, find the weather condition of the current hour.
 
@@ -55,6 +58,34 @@ export let initCity = function (query) {
 
   //Severe risk
   const severeRisk = query.days[0].severerisk;
+
+  //Daily weather
+  const dailyWeatherArray = [];
+
+  console.log(query.days);
+  console.log(query.days[0].hours);
+
+  for (let i = 0; i < query.days.length; i++) {
+    let currDay = query.days[i];
+    const day = new Day(
+      currDay.datetime,
+      currDay.icon,
+      currDay.tempmax,
+      currDay.tempmin
+    );
+    dailyWeatherArray.push(day);
+  }
+
+  //Hourly weather
+  const hourlyWeatherArray = [];
+  for (let i = 0; i < query.days[0].hours.length; i++) {
+    let currHour = query.days[0].hours[i];
+    const hour = new Hour(currHour.datetime, currHour.icon, currHour.temp);
+    hourlyWeatherArray.push(hour);
+  }
+
+  console.log(dailyWeatherArray);
+  console.log(hourlyWeatherArray);
 
   let cnt = 0;
   [

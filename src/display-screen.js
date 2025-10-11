@@ -1,13 +1,22 @@
 import mainInformation from "./components/main-information";
-
+import humidity from "./components/humidity";
+import airQuality from "./components/airquality";
 export default function showDisplay(data, currentCity) {
   //Global variables for our weather components
 
   //Main information (City name, temperature, etc...)
   //Display Main Information
+  const mim = mainInformation(currentCity);
+  mim.update();
 
-  const test = mainInformation(currentCity);
-  test.update();
+  //Display humidity
+  const hm = humidity(currentCity);
+  hm.update();
+
+  const aqm = airQuality(currentCity);
+  aqm.update();
+
+  //Display air quality
 
   console.log(window.screen);
 

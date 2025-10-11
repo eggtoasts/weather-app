@@ -1,6 +1,7 @@
 export let initCity = function (query) {
   //Later, find the weather condition of the current hour.
 
+  console.log(query);
   //Main info
   const name = query.address;
   const temperature = query.currentConditions.temp;
@@ -40,6 +41,9 @@ export let initCity = function (query) {
   //Uv index
   const uvIndex = query.currentConditions.uvindex;
 
+  //Air quality
+  const airQuality = query.days[0].aqius;
+
   //Feels like
   const feelsLike = query.currentConditions.feelslike;
   const feelsLikeMax = query.days[0].feelslikemax;
@@ -78,6 +82,11 @@ export let initCity = function (query) {
   });
 
   //Getters
+
+  const getAirQuality = function () {
+    return airQuality;
+  };
+
   const getName = function () {
     return name;
   };
@@ -163,6 +172,7 @@ export let initCity = function (query) {
   };
 
   return {
+    getAirQuality,
     getName,
     getTemperature,
     getWeatherCondition,
@@ -184,5 +194,6 @@ export let initCity = function (query) {
     getFeelsLikeMax,
     getFeelsLikeMin,
     getSevereRisk,
+    airQuality,
   };
 };

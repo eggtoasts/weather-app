@@ -10,7 +10,7 @@ export default function mainScreen() {
 
   async function getCity(query) {
     try {
-      let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}`;
+      let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
       const getCity = await fetch(apiLink);
       const data = await getCity.json();
 

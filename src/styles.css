@@ -686,19 +686,20 @@ body {
     grid-template-columns: repeat(2, minmax(100px, 200px));
     grid-auto-rows: 0px;
     grid-auto-columns: 0px;
-    grid-template-rows: repeat(10, minmax(100px, 200px));
+    grid-template-rows: repeat(11, minmax(100px, 200px));
 
     grid-template-areas:
       "hourly-weather hourly-weather"
       "daily-weather daily-weather"
       "daily-weather daily-weather"
       "wind wind"
-      "weather-alert sunrise"
+      "air-quality air-quality"
+      "uv-index weather-alert"
       "severe-risk moon-phase"
       "precip feels-like"
-      "air-quality uv-index"
-      "humidity visibility"
-      "pressure averages";
+      "sunrise humidity"
+      "pressure visibility"
+      "averages .";
 
     gap: 20px;
   }

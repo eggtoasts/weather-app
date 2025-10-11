@@ -2,6 +2,7 @@ import showDisplay from "./display-screen";
 import { API_KEY } from "./env";
 import { initCity } from "./initCity";
 import citySettings from "./settingsState";
+import ripCafeWifiJSON from "./whenCafeWifiDies.json";
 
 import createCompass from "./sub-components/createCompass";
 import createPressureMeter from "./sub-components/createPressureMeter";
@@ -22,12 +23,16 @@ export default function mainScreen() {
   const windMButton = document.querySelector(".wind.m");
   const windKMButton = document.querySelector(".wind.km");
 
+  //Error message
+  const errorPopup = document.querySelector(".invalid-city-pop-up");
+
   let currentCity = "orlando";
   //    put up a default city.
-  getCity(currentCity);
 
   //Create settings
   let setting = citySettings();
+
+  getCity(currentCity);
 
   //initialize setting to default
   setting.init("F", "M", "IN", "M", "M");
@@ -66,9 +71,11 @@ export default function mainScreen() {
 
   async function getCity(query) {
     try {
-      let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
-      const getCity = await fetch(apiLink);
-      const data = await getCity.json();
+      errorPopup.classList.add("hidden");
+      //   let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
+      //   const getCity = await fetch(apiLink);
+      //   const data = await getCity.json();
+      const data = ripCafeWifiJSON;
 
       try {
         console.log(data);
@@ -78,10 +85,11 @@ export default function mainScreen() {
 
         showDisplay(setting, currentCity);
       } catch (error) {
-        console.log(error + " " + "Could not create city.");
+        console.log(error.stack + " " + "Could not create city.");
       }
     } catch (erorr) {
-      console.log("Error, could not fetch city.");
+      console.log(error.stack + " Error, could not fetch city.");
+      errorPopup.classList.remove("hidden");
       return;
     }
   }

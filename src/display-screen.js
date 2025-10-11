@@ -5,6 +5,7 @@ import precipitation from "./components/precipitation";
 import feelslike from "./components/feelslike";
 import wind from "./components/wind";
 import pressure from "./components/pressure";
+import visibility from "./components/visibility";
 
 export default function showDisplay(setting, currentCity) {
   //Main information (City name, temperature, etc...)
@@ -36,4 +37,10 @@ export default function showDisplay(setting, currentCity) {
   //Display pressure
   const prem = pressure(currentCity, setting);
   prem.update();
+
+  //Display visibility
+  const vm = visibility(currentCity, setting);
+  vm.update();
+
+  //Display sunrise/sunset
 }

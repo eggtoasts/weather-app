@@ -664,11 +664,11 @@ body {
 .settings-dialog {
   right: 60px;
   top: 20px;
-  position: absolute;
+  position: fixed;
   display: flex;
   flex-direction: column;
   width: 250px;
-  height: 250px;
+  height: 260px;
   border-radius: 25px;
   border: 1px solid black;
 
@@ -681,11 +681,16 @@ body {
 
 .dialog-item {
   display: flex;
+  margin-top: 5px;
 }
 .button-wrapper {
   margin-left: auto;
   display: flex;
   gap: 10px;
+}
+
+.settings-dialog button {
+  border-style: none;
 }
 
 .button-wrapper button {
@@ -694,12 +699,18 @@ body {
   border-radius: 20px;
 }
 
+.button-done-wrapper {
+  display: flex;
+}
+
 .done-button {
   margin-left: auto;
 
   height: 30px;
   width: 40px;
   border-radius: 20px;
+
+  margin-top: 10px;
 }
 
 @media screen and (min-width: 920px) and (max-width: 1300px) {

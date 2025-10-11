@@ -22,12 +22,14 @@ console.log(window.screen);
 const far = 55;
 
 const windCircle = document.querySelector(".wind-circle");
+const pressureCircle = document.querySelector(".pressure-circle");
 
 compassLineMaker(far);
+pressureLineMaker(-55);
 
 async function compassLineMaker(far) {
   for (let i = 0; i < 360; i += 5) {
-    const currLine = makeLine();
+    const currLine = makeCompassLine();
 
     if (checkIfLineShouldBePlaced(i)) continue;
     await new Promise((resolve, reject) => setTimeout(resolve, 100));
@@ -40,6 +42,25 @@ async function compassLineMaker(far) {
   }
 }
 
+async function pressureLineMaker(far) {
+  for (let i = -120; i <= 120; i += 8) {
+    const currLine = makePressureLine();
+
+    await new Promise((resolve, reject) => setTimeout(resolve, 100));
+
+    currLine.style.transform = `rotate(${i}deg) translateY(${far}px)`;
+    pressureCircle.appendChild(currLine);
+  }
+}
+
+addPressureMarker(-120, -55);
+
+function addPressureMarker(deg, far) {
+  const currLine = makePressureMarker();
+  currLine.style.transform = `rotate(${deg}deg) translateY(${far}px)`;
+  pressureCircle.appendChild(currLine);
+}
+
 function checkIfLineShouldBePlaced(i) {
   return (
     (i < 100 && i > 80) ||
@@ -50,9 +71,23 @@ function checkIfLineShouldBePlaced(i) {
   );
 }
 
-function makeLine() {
+function makeCompassLine() {
   const compassLine = document.createElement("div");
   compassLine.classList.add("compass-line");
 
   return compassLine;
+}
+
+function makePressureLine() {
+  const pressureLine = document.createElement("div");
+  pressureLine.classList.add("pressure-line");
+
+  return pressureLine;
+}
+
+function makePressureMarker() {
+  const pressureMarker = document.createElement("div");
+  pressureMarker.classList.add("pressure-marker");
+
+  return pressureMarker;
 }

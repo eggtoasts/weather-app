@@ -77,5 +77,112 @@ export let initCity = function (query) {
     console.log(cnt + " " + e);
   });
 
-  return {};
+  //Getters
+  const getName = function () {
+    return name;
+  };
+
+  const getTemperature = function () {
+    return temperature;
+  };
+
+  const getWeatherCondition = function () {
+    return weatherCondition;
+  };
+
+  const getWeatherDescription = function () {
+    return weatherDescription;
+  };
+
+  const getLowTemperature = function () {
+    return lowTemperature;
+  };
+
+  const getHighTemperature = function () {
+    return highTemperature;
+  };
+
+  const getPrecipitation = function () {
+    return precipitation;
+  };
+
+  const getPrecipProbability = function () {
+    return precipProbability;
+  };
+
+  const getHumidity = function () {
+    return humidity;
+  };
+
+  const getDew = function () {
+    return dew;
+  };
+
+  const getSunrise = function () {
+    return sunrise;
+  };
+
+  const getSunset = function () {
+    return sunset;
+  };
+
+  const getWindSpeed = function () {
+    return windSpeed;
+  };
+
+  const getWindGust = function () {
+    return windGust;
+  };
+
+  const getPressure = function () {
+    return pressure;
+  };
+
+  const getVisibility = function () {
+    return visibility;
+  };
+
+  const getUvIndex = function () {
+    return uvIndex;
+  };
+
+  const getFeelsLike = function () {
+    return feelsLike;
+  };
+
+  const getFeelsLikeMax = function () {
+    return feelsLikeMax;
+  };
+
+  const getFeelsLikeMin = function () {
+    return feelsLikeMin;
+  };
+
+  const getSevereRisk = function () {
+    return severeRisk;
+  };
+
+  return {
+    getName,
+    getTemperature,
+    getWeatherCondition,
+    getWeatherDescription,
+    getLowTemperature,
+    getHighTemperature,
+    getPrecipitation,
+    getPrecipProbability,
+    getHumidity,
+    getDew,
+    getSunrise,
+    getSunset,
+    getWindSpeed,
+    getWindGust,
+    getPressure,
+    getVisibility,
+    getUvIndex,
+    getFeelsLike,
+    getFeelsLikeMax,
+    getFeelsLikeMin,
+    getSevereRisk,
+  };
 };

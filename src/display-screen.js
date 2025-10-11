@@ -1,12 +1,13 @@
-export default function showDisplay(query) {
+import mainInformation from "./components/main-information";
+
+export default function showDisplay(data, currentCity) {
   //Global variables for our weather components
 
   //Main information (City name, temperature, etc...)
-  const cityName = document.querySelector("current-city-title");
-  const temperature = document.querySelector("temperature");
-  const weatherCondition = document.querySelector("weather");
-
   //Display Main Information
+
+  const test = mainInformation(currentCity);
+  test.update();
 
   console.log(window.screen);
 

@@ -13,17 +13,18 @@ export default function mainScreen() {
       let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}`;
       const getCity = await fetch(apiLink);
       const data = await getCity.json();
-      console.log(data);
 
       try {
         const currentCity = initCity(data);
 
-        showDisplay(query);
+        console.log(currentCity);
+
+        showDisplay(data, currentCity);
       } catch (error) {
-        console.log("Could not create city.");
+        console.log(error + " " + "Could not create city.");
       }
     } catch (erorr) {
-      console.log("Error.");
+      console.log("Error, could not fetch city.");
       return;
     }
   }

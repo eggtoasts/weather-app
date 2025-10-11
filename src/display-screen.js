@@ -3,6 +3,7 @@ import humidity from "./components/humidity";
 import airQuality from "./components/airquality";
 import precipitation from "./components/precipitation";
 import feelslike from "./components/feelslike";
+import wind from "./components/wind";
 export default function showDisplay(data, currentCity) {
   //Global variables for our weather components
 
@@ -26,6 +27,10 @@ export default function showDisplay(data, currentCity) {
   //Display feels like
   const fm = feelslike(currentCity);
   fm.update();
+
+  //Display wind
+  const wm = wind(currentCity);
+  wm.update();
   console.log(window.screen);
 
   //compass line maker

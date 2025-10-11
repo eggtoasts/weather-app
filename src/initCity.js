@@ -143,6 +143,10 @@ export let initCity = function (query) {
     return windGust;
   };
 
+  const getWindDirection = function () {
+    return windDirection;
+  };
+
   const getPressure = function () {
     return pressure;
   };
@@ -187,6 +191,7 @@ export let initCity = function (query) {
     getSunset,
     getWindSpeed,
     getWindGust,
+    getWindDirection,
     getPressure,
     getVisibility,
     getUvIndex,

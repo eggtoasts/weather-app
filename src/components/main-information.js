@@ -2,8 +2,8 @@ export default function mainInformation(currentCity) {
   const cityName = document.querySelector(".current-city-title");
   const temperature = document.querySelector(".temperature");
   const weatherCondition = document.querySelector(".weather");
-  const highTemp = document.querySelector(".lows.temp");
-  const lowTemp = document.querySelector(".highs.temp");
+  const highTemp = document.querySelector(".lows");
+  const lowTemp = document.querySelector(".highs");
 
   const capitalizeName = function (name) {
     let nameSplit = name.split(" ");

@@ -161,7 +161,7 @@ button {
 
 /* General */
 
-.temp::after {
+.deg::after {
   content: "°";
 }
 

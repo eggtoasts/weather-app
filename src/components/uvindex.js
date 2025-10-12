@@ -16,7 +16,7 @@ export default function uvIndex(currentCity) {
     }
   }
   const update = function () {
-    const uvindex = currentCity.getUvIndex();
+    const uvindex = currentCity.uvIndex;
     uvNumber.textContent = uvindex;
     uvCondition.textContent = updateUvIndexCondition(uvindex);
   };

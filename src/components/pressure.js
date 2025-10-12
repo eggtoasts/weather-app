@@ -23,7 +23,7 @@ export default function pressure(currentCity, setting) {
     }deg) translateY(-55px)`;
   };
   const update = function () {
-    let deg = currentCity.getPressure();
+    let deg = currentCity.pressure;
     pressureNumber.textContent = deg;
     movePressureMarker(convertToInHg(deg));
   };

@@ -13,9 +13,9 @@ export default function wind(currentCity, setting) {
   }
   const update = function () {
     let unit = setting.getWindUnit() == "KM" ? "km/h" : "mph";
-    let gust = currentCity.getWindGust();
-    let speed = currentCity.getWindSpeed();
-    let dir = currentCity.getWindDirection();
+    let gust = currentCity.windGust;
+    let speed = currentCity.windSpeed;
+    let dir = currentCity.windDirection;
     console.log("wind type is " + setting.getWindUnit());
 
     if (unit == "km/h") {

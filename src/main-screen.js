@@ -81,9 +81,7 @@ export default function mainScreen() {
         console.log(data);
         currentCity = initCity(data);
 
-        console.log(currentCity);
-
-        showDisplay(setting, currentCity);
+        showDisplay(setting, currentCity, data);
       } catch (error) {
         console.log(error.stack + " " + "Could not create city.");
       }

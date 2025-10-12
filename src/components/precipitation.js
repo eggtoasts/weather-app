@@ -3,9 +3,9 @@ export default function precipitation(currentCity) {
   const precipProb = document.querySelector(".precip-prob");
 
   const update = function () {
-    precipNumber.textContent = currentCity.getPrecipitation() + "''";
+    precipNumber.textContent = currentCity.precipitation + "''";
     precipProb.textContent =
-      "Chances of Rainfall: " + currentCity.getPrecipProbability() + "%";
+      "Chances of Rainfall: " + currentCity.precipProbability + "%";
   };
 
   return { update };

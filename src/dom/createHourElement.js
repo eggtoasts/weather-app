@@ -1,4 +1,6 @@
-export function createHourElement(currentHour) {
+import { initCity } from "../initCity";
+import showDisplay from "../display-screen";
+export function createHourElement(query, currentHour, now, setting) {
   const time = currentHour.time;
   const iconType = currentHour.iconType;
   const temp = currentHour.temp;
@@ -21,11 +23,18 @@ export function createHourElement(currentHour) {
   hourItem.appendChild(hourIcon);
   hourItem.appendChild(hourTemp);
 
+  if (now) {
+    return hourItem;
+  }
+
   //Add event
   hourItem.addEventListener("click", (e) => {
-    //find hour item in query Hours array
-    //make that our current city
-    //display
+    // console.log(currentHour);
+    // console.log(query);
+    // const currentCityHour = initCity(query, currentHour);
+    // showDisplay(setting, currentCityHour, query);
+    //works
+    // console.log(w);
   });
 
   return hourItem;

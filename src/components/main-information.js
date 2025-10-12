@@ -19,17 +19,17 @@ export default function mainInformation(currentCity, setting) {
   };
 
   const update = function () {
-    let temp = currentCity.getTemperature();
+    let temp = currentCity.temperature;
     const unit = setting.getTemperatureUnit();
 
     if (unit === "C") {
       temp = convertToCelsius(temp);
     }
-    cityName.textContent = capitalizeName(currentCity.getName());
+    cityName.textContent = capitalizeName(currentCity.name);
     temperature.textContent = temp;
-    weatherCondition.textContent = currentCity.getWeatherCondition();
-    highTemp.textContent = currentCity.getHighTemperature();
-    lowTemp.textContent = currentCity.getLowTemperature();
+    weatherCondition.textContent = currentCity.weatherCondition;
+    highTemp.textContent = currentCity.highTemperature;
+    lowTemp.textContent = currentCity.lowTemperature;
   };
 
   return { update };

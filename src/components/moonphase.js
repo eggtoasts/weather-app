@@ -22,7 +22,7 @@ export default function moonPhase(currentCity) {
   };
 
   const update = function () {
-    const phase = currentCity.getMoonPhase();
+    const phase = currentCity.moonphase;
     console.log(phase);
     moonPhaseType.textContent = convertMoonPhase(phase);
   };

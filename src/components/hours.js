@@ -1,19 +1,21 @@
+import { Hour } from "../classes/Hour";
 import { createHourElement } from "../dom/createHourElement";
 import { clearContainer } from "../helpers/ui";
-export default function days(currentCity) {
+export default function days(query, currentCity, setting) {
   const hourlyContainer = document.querySelector(".hourly-container");
 
   console.log(hourlyContainer);
   //Clear daily container
   clearContainer(hourlyContainer);
 
-  const hoursArray = currentCity.getHoursArray();
+  const daysArray = currentCity.daysArray[0];
+  const hoursArray = daysArray.getHourArray;
 
-  hoursArray.forEach((element) => {
-    console.log(element);
-    const hourElement = createHourElement(element);
+  for (let i = 0; i < 24; i++) {
+    const element = hoursArray[i];
+    const hourElement = createHourElement(query, element, null, setting);
     hourlyContainer.append(hourElement);
-  });
+  }
 
   const update = function () {};
 

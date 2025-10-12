@@ -16,8 +16,8 @@ export default function feelslike(currentCity) {
   }
 
   const update = function () {
-    const feelslike = currentCity.getFeelsLike();
-    const temp = currentCity.getTemperature();
+    const feelslike = currentCity.feelsLike;
+    const temp = currentCity.temperature;
     feelsLikeNumber.textContent = feelslike;
     feelsLikeTemp.textContent = temp;
     feelsLikeDescription.textContent = updateDescription(feelslike, temp);

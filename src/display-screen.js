@@ -12,7 +12,7 @@ import severeRisk from "./components/severerisk";
 import days from "./components/days";
 import hours from "./components/hours";
 
-export default function showDisplay(setting, currentCity) {
+export default function showDisplay(setting, currentCity, query) {
   //Main information (City name, temperature, etc...)
   //Display Main Information
   const mim = mainInformation(currentCity, setting);
@@ -63,6 +63,6 @@ export default function showDisplay(setting, currentCity) {
   const dm = days(currentCity);
   // dm.update();
 
-  const hom = hours(currentCity);
+  const hom = hours(query, currentCity, setting);
   // hom.update();
 }

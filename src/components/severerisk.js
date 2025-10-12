@@ -13,7 +13,7 @@ export default function severeRisk(currentCity) {
   };
 
   const update = function () {
-    const risk = currentCity.getSevereRisk();
+    const risk = currentCity.severeRisk;
     severeRiskNumber.textContent = updateRiskNumber(risk);
     severeRiskType.textContent = `There is a ${risk}% chance of severe storms.`;
   };

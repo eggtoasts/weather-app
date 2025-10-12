@@ -4,5 +4,14 @@ export class Day {
     this.iconType = iconType;
     this.minTemp = minTemp;
     this.maxTemp = maxTemp;
+    this.hourArray = [];
+  }
+
+  set setHourArray(hourArray) {
+    this.hourArray = hourArray;
+  }
+
+  get getHourArray() {
+    return this.hourArray;
   }
 }

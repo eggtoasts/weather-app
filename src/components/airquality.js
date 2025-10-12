@@ -27,7 +27,7 @@ export default function airQuality(currentCity) {
   }
 
   const update = function () {
-    const aqi = currentCity.getAirQuality();
+    const aqi = currentCity.airQuality;
     airQualityNumber.textContent = aqi;
     moveCircle(aqi);
     airQualityCondition.textContent = updateCondition(aqi);

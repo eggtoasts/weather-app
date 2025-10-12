@@ -15,7 +15,7 @@ export default function visibility(currentCity, currentMeasure) {
   };
 
   const update = function () {
-    const visibility = currentCity.getVisibility();
+    const visibility = currentCity.visibility;
     visibilityNumber.textContent = visibility;
     visibilityDescription.textContent = updateVisibilityDescription(visibility);
   };

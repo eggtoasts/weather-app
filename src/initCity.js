@@ -1,5 +1,5 @@
-import { Day } from "./classes/day";
-import { Hour } from "./classes/hour";
+import { Day } from "./classes/Day";
+import { Hour } from "./classes/Hour";
 
 export let initCity = function (query) {
   //Later, find the weather condition of the current hour.

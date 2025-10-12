@@ -9,6 +9,8 @@ import visibility from "./components/visibility";
 import uvIndex from "./components/uvindex";
 import moonPhase from "./components/moonphase";
 import severeRisk from "./components/severerisk";
+import days from "./components/days";
+import hours from "./components/hours";
 
 export default function showDisplay(setting, currentCity) {
   //Main information (City name, temperature, etc...)
@@ -56,4 +58,11 @@ export default function showDisplay(setting, currentCity) {
   //Display sunrise/sunset
   const sm = severeRisk(currentCity);
   sm.update();
+
+  //Display days
+  const dm = days(currentCity);
+  // dm.update();
+
+  const hom = hours(currentCity);
+  // hom.update();
 }

@@ -21,5 +21,12 @@ export function createHourElement(currentHour) {
   hourItem.appendChild(hourIcon);
   hourItem.appendChild(hourTemp);
 
+  //Add event
+  hourItem.addEventListener("click", (e) => {
+    //find hour item in query Hours array
+    //make that our current city
+    //display
+  });
+
   return hourItem;
 }

@@ -12,7 +12,7 @@
 
   font-family: "Roboto";
 
-  /* border: var(--r); */
+  border: var(--r);
 }
 
 html {
@@ -161,6 +161,15 @@ button.settings {
 
 /* General */
 
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.description {
+  margin-top: auto;
+}
+
 .main-content {
   position: relative;
 }
@@ -171,7 +180,7 @@ button.settings {
 
 .box {
   position: relative;
-  padding: 10px;
+  padding: 15px;
 
   border-radius: 20px;
 

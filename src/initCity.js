@@ -87,6 +87,10 @@ export let initCity = function (query) {
   console.log(dailyWeatherArray);
   console.log(hourlyWeatherArray);
 
+  // const findHour = function(){
+  //     (query.days[0].hours.length; i++)
+  // }
+
   let cnt = 0;
   [
     name,

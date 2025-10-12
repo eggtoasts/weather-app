@@ -118,6 +118,14 @@ export let initCity = function (query) {
 
   //Getters
 
+  const getDaysArray = function () {
+    return dailyWeatherArray;
+  };
+
+  const getHoursArray = function () {
+    return hourlyWeatherArray;
+  };
+
   const getMoonPhase = function () {
     return moonPhase;
   };
@@ -214,6 +222,8 @@ export let initCity = function (query) {
   };
 
   return {
+    getDaysArray,
+    getHoursArray,
     getMoonPhase,
     getAirQuality,
     getName,

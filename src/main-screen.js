@@ -72,15 +72,15 @@ export default function mainScreen() {
   async function getCity(query) {
     try {
       errorPopup.classList.add("hidden");
-      //   let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
-      //   const getCity = await fetch(apiLink);
-      //   const data = await getCity.json();
-      const data = ripCafeWifiJSON;
+      let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
+      const getCity = await fetch(apiLink);
+      const data = await getCity.json();
+      // const data = ripCafeWifiJSON;
 
       try {
         console.log(data);
-        currentCity = initCity(data);
-
+        currentCity = initCity(data, null, 0);
+        console.log(currentCity);
         showDisplay(setting, currentCity, data);
       } catch (error) {
         console.log(error.stack + " " + "Could not create city.");

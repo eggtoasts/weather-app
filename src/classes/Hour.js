@@ -32,7 +32,7 @@ export class Hour {
     this.winddir = winddir;
     this.pressure = pressure;
     this.visibility = visibility;
-    this.vindex = uvindex;
+    this.uvindex = uvindex;
     this.severerisk = severerisk;
     this.aqius = aqius;
     this.conditions = conditions;

@@ -12,7 +12,7 @@
 
   font-family: "Roboto";
 
-  border: var(--r);
+  /* border: var(--r); */
 }
 
 html {
@@ -225,6 +225,8 @@ button.settings {
   margin-top: auto;
 }
 .hour-icon {
+  font-size: 22px;
+  align-self: center;
   margin-top: auto;
 }
 

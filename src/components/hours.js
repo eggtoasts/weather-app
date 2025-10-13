@@ -3,10 +3,13 @@ import { createHourElement } from "../dom/createHourElement";
 import { clearContainer } from "../helpers/ui";
 export default function days(query, currentCity, setting) {
   const hourlyContainer = document.querySelector(".hourly-container");
+  const description = document.querySelector(".hourly-weather-description");
 
   console.log(hourlyContainer);
   //Clear daily container
   clearContainer(hourlyContainer);
+
+  description.textContent = currentCity.weatherDescription;
 
   const daysArray = currentCity.daysArray[0];
   const hoursArray = daysArray.getHourArray;

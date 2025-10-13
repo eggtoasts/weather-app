@@ -1,9 +1,9 @@
 import { Day } from "./classes/Day";
 import { Hour } from "./classes/Hour";
 
-function apiHourToHourClass(hourQuery) {
+function apiHourToHourClass(hourQuery, currentDateTime) {
   return new Hour(
-    hourQuery.datetime,
+    hourQuery.datetime || "Now",
     hourQuery.icon,
     hourQuery.temp,
     hourQuery.humidity,
@@ -23,7 +23,7 @@ function apiHourToHourClass(hourQuery) {
   );
 }
 
-function apiDayToDayClass(dayQuery) {
+function apiDayToDayClass(dayQuery, currentDate, currentDateTime, query) {
   const day = new Day(
     dayQuery.datetime,
     dayQuery.icon,
@@ -31,45 +31,92 @@ function apiDayToDayClass(dayQuery) {
     dayQuery.tempmin
   );
 
+  if (dayQuery.datetime === currentDate) {
+    const currentDayHour = new Hour(
+      query.currentConditions.datetime,
+      query.currentConditions.icon,
+      query.currentConditions.temp,
+      query.currentConditions.humidity,
+      query.currentConditions.dew,
+      query.currentConditions.precip,
+      query.currentConditions.precipprob,
+      query.currentConditions.windgust,
+      query.currentConditions.windspeed,
+      query.currentConditions.winddir,
+      query.currentConditions.pressure,
+      query.currentConditions.visibility,
+      query.currentConditions.uvindex,
+      query.days[0].severerisk,
+      query.currentConditions.aqius,
+      query.currentConditions.conditions,
+      query.currentConditions.icon
+    );
+
+    let arr = [currentDayHour];
+    const hour = Number(currentDateTime.substring(0, 2)) + 1;
+    console.log(hour);
+
+    const left = 24 - (24 - hour) - 1;
+
+    const next24HoursArray = arr.concat(
+      query.days[0].hours.slice(hour).concat(query.days[1].hours.slice(0, left))
+    );
+
+    day.setHourArray = next24HoursArray.map(apiHourToHourClass);
+    console.log(day.setHourArray);
+
+    return day;
+  }
+
   day.setHourArray = dayQuery.hours.map(apiHourToHourClass);
+
   return day;
 }
 
-export let initCity = function (query, hour) {
+export let initCity = function (query, hour, dayNumber) {
   const currentSource = hour || query.currentConditions;
+
+  //check days date later, after we finished hours
+  const currentDate = query.days[0].datetime;
+  const currentDateTime = query.currentConditions.datetime;
 
   const weatherData = {
     //Main Info
     name: query.resolvedAddress,
     temperature: currentSource.temp,
-    weatherCondition: query.days[0].conditions,
-    weatherDescription: query.days[0].description,
-    currentDateTime: query.currentConditions.datetime,
+    weatherCondition:
+      currentSource.conditions || query.days[dayNumber].conditions,
+    weatherDescription: query.days[dayNumber].description,
+    currentDate: currentDate,
+    currentDateTime: currentDateTime,
+    hourTime: currentSource.time,
 
     //Other properties
-    precipitation: query.currentConditions.precip,
-    precipProbability: query.days[0].precipprob,
-    lowTemperature: query.days[0].tempmin,
-    highTemperature: query.days[0].tempmax,
-    humidity: query.currentConditions.humidity,
-    dew: query.currentConditions.dew,
+    precipitation: currentSource.precip,
+    precipProbability: query.days[dayNumber].precipprob,
+    lowTemperature: query.days[dayNumber].tempmin,
+    highTemperature: query.days[dayNumber].tempmax,
+    humidity: currentSource.humidity,
+    dew: currentSource.dew,
     sunrise: query.currentConditions.sunrise,
     sunset: query.currentConditions.sunset,
-    windSpeed: query.currentConditions.windspeed,
-    windGust: query.currentConditions.windgust,
-    windDirection: query.currentConditions.winddir,
-    pressure: query.currentConditions.pressure,
-    visibility: query.currentConditions.visibility,
+    windSpeed: currentSource.windspeed,
+    windGust: currentSource.windgust,
+    windDirection: currentSource.winddir,
+    pressure: currentSource.pressure,
+    visibility: currentSource.visibility,
     moonPhase: query.currentConditions.moonphase,
     uvIndex: query.currentConditions.uvindex,
-    airQuality: query.days[0].aqius,
+    airQuality: currentSource.aqius,
     feelsLike: query.currentConditions.feelslike,
-    feelsLikeMax: query.days[0].feelslikemax,
-    feelsLikeMin: query.days[0].feelslikemin,
+    feelsLikeMax: query.days[dayNumber].feelslikemax,
+    feelsLikeMin: query.days[dayNumber].feelslikemin,
 
-    severeRisk: query.days[0].severerisk,
+    severeRisk: query.days[dayNumber].severerisk,
 
-    daysArray: query.days.map((d) => apiDayToDayClass(d)),
+    daysArray: query.days.map((d) =>
+      apiDayToDayClass(d, currentDate, currentDateTime, query)
+    ),
   };
 
   return weatherData;

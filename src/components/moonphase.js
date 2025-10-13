@@ -1,5 +1,8 @@
+import { setMoonIcon } from "../helpers/icon";
+
 export default function moonPhase(currentCity) {
   const moonPhaseType = document.querySelector(".moon-phase-type");
+  const moonIcon = document.querySelector(".moon-icon");
 
   const convertMoonPhase = function (phase) {
     if ((phase >= 0.0 && phase <= 0.03) || (phase >= 0.97 && phase <= 1.0)) {
@@ -11,7 +14,7 @@ export default function moonPhase(currentCity) {
     } else if (phase >= 0.28 && phase <= 0.47) {
       return "Waxing Gibbous";
     } else if (phase >= 0.47 && phase <= 0.53) {
-      return "Fll Moon";
+      return "Full Moon";
     } else if (phase >= 0.53 && phase <= 0.72) {
       return "Waning Gibbous";
     } else if (phase >= 0.72 && phase <= 0.78) {
@@ -24,7 +27,10 @@ export default function moonPhase(currentCity) {
   const update = function () {
     const phase = currentCity.moonPhase;
     console.log(phase);
-    moonPhaseType.textContent = convertMoonPhase(phase);
+    const moonPhase = convertMoonPhase(phase);
+    moonPhaseType.textContent = moonPhase;
+
+    moonIcon.appendChild(setMoonIcon(moonPhase));
   };
 
   return { update };

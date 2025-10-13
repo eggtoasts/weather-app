@@ -1,7 +1,7 @@
 import { initCity } from "../initCity";
 import showDisplay from "../display-screen";
 import { convertTo12Hour } from "../helpers/time";
-import { setIcon } from "../helpers/icon";
+import { setWeatherIcon } from "../helpers/icon";
 export function createHourElement(query, currentHour, now, setting) {
   console.log(currentHour);
   const time = currentHour.time;
@@ -10,7 +10,7 @@ export function createHourElement(query, currentHour, now, setting) {
 
   const hourItem = document.createElement("div");
   const hourTitle = document.createElement("h4");
-  const hourIcon = setIcon(iconType);
+  const hourIcon = setWeatherIcon(iconType);
   const hourTemp = document.createElement("h4");
 
   hourItem.classList.add("hour-item");

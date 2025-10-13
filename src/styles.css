@@ -391,8 +391,29 @@ button.settings {
   grid-area: sunrise;
 }
 
+/* MOON */
+
 .moon-phase {
   grid-area: moon-phase;
+}
+
+.moon-icon {
+  position: relative;
+  display: flex;
+
+  height: 100%;
+  font-size: 100px;
+  align-items: center;
+  justify-content: center;
+}
+
+.bottom-moon {
+  color: grey;
+}
+
+.top-moon {
+  position: absolute;
+  color: rgb(186, 186, 186);
 }
 
 /* WIND */

@@ -1,9 +1,9 @@
-export function setIcon(icontype) {
+export function setWeatherIcon(iconType) {
   //Create div element
   const element = document.createElement("div");
   element.setAttribute("class", "hour-icon iconify");
   //We assign the icon's data-icon name to corresponding case
-  switch (icontype) {
+  switch (iconType) {
     case "snow":
       element.setAttribute("data-icon", "mdi-snowflake");
       break;
@@ -34,4 +34,38 @@ export function setIcon(icontype) {
   }
 
   return element;
+}
+
+export function setMoonIcon(phaseType) {
+  const topMoon = document.createElement("div");
+  topMoon.setAttribute("class", "iconify top-moon");
+
+  switch (phaseType) {
+    case "newMoon":
+      topMoon.setAttribute("data-icon", "mdi-moon-new");
+      break;
+    case "Waxing Cresent":
+      topMoon.setAttribute("data-icon", "mdi-moon-waxing-cresent");
+      break;
+    case "First Quarter":
+      topMoon.setAttribute("data-icon", "mdi-moon-first-quarter");
+      break;
+    case "Waxing Gibbous":
+      topMoon.setAttribute("data-icon", "mdi-moon-waxing-gibbous");
+      break;
+    case "Full Moon":
+      topMoon.setAttribute("data-icon", "mdi-moon-full");
+      break;
+    case "Waning Gibbous":
+      topMoon.setAttribute("data-icon", "mdi-moon-waning-gibbous");
+      break;
+    case "Last Quarter":
+      console.log("br");
+      topMoon.setAttribute("data-icon", "mdi-moon-last-quarter");
+      break;
+    case "Waning Cresent":
+      topMoon.setAttribute("data-icon", "mdi-moon-waning-cresent");
+      break;
+  }
+  return topMoon;
 }

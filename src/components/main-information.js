@@ -5,6 +5,7 @@ export default function mainInformation(currentCity, setting) {
   const weatherCondition = document.querySelector(".weather");
   const highTemp = document.querySelector(".lows.deg");
   const lowTemp = document.querySelector(".highs.deg");
+  const currentTime = document.querySelector(".current-time");
 
   const capitalizeName = function (name) {
     let nameSplit = name.split(" ");
@@ -27,6 +28,7 @@ export default function mainInformation(currentCity, setting) {
     }
     cityName.textContent = capitalizeName(currentCity.name);
     temperature.textContent = temp;
+    currentTime.textContent = currentCity.currentDate;
     weatherCondition.textContent = currentCity.weatherCondition;
     highTemp.textContent = currentCity.highTemperature;
     lowTemp.textContent = currentCity.lowTemperature;

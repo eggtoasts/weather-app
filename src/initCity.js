@@ -62,7 +62,9 @@ function apiDayToDayClass(dayQuery, currentDate, currentDateTime, query) {
       query.days[0].hours.slice(hour).concat(query.days[1].hours.slice(0, left))
     );
 
-    day.setHourArray = next24HoursArray.map(apiHourToHourClass);
+    day.setHourArray = next24HoursArray.map((h) =>
+      apiHourToHourClass(h, currentDateTime)
+    );
     console.log(day.setHourArray);
 
     return day;
@@ -77,7 +79,7 @@ export let initCity = function (query, hour, dayNumber) {
   const currentSource = hour || query.currentConditions;
 
   //check days date later, after we finished hours
-  const currentDate = query.days[0].datetime;
+  const currentDate = query.days[dayNumber].datetime;
   const currentDateTime = query.currentConditions.datetime;
 
   const weatherData = {

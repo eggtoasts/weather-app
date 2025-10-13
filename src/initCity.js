@@ -27,8 +27,8 @@ function apiDayToDayClass(dayQuery, currentDate, currentDateTime, query) {
   const day = new Day(
     dayQuery.datetime,
     dayQuery.icon,
-    dayQuery.tempmax,
-    dayQuery.tempmin
+    dayQuery.tempmin,
+    dayQuery.tempmax
   );
 
   if (dayQuery.datetime === currentDate) {

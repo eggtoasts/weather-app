@@ -1,7 +1,9 @@
-export function setWeatherIcon(iconType) {
+export function setWeatherIcon(iconType, day) {
   //Create div element
   const element = document.createElement("div");
   element.setAttribute("class", "hour-icon iconify");
+
+  if (day) element.setAttribute("class", "daily-icon iconify");
   //We assign the icon's data-icon name to corresponding case
   switch (iconType) {
     case "snow":

@@ -1,4 +1,5 @@
 import { convertToInHg } from "../helpers/convert";
+import settings from "../settingsState";
 
 export default function pressure(currentCity) {
   const pressureMarker = document.querySelector(".pressure-marker");
@@ -24,8 +25,13 @@ export default function pressure(currentCity) {
   };
   const update = function () {
     let deg = currentCity.pressure;
-    pressureNumber.textContent = deg;
+
+    //We moved pressure marker based on its Hg value regardless
     movePressureMarker(convertToInHg(deg));
+
+    if (settings.pressureUnit === "inhg") deg = convertToInHg(deg);
+
+    pressureNumber.textContent = deg;
   };
 
   return { update };

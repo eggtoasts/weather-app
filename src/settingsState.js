@@ -20,6 +20,6 @@ function citySettings(
 }
 
 //Create settings and initialize setting to default
-const settings = citySettings("F", "mph", "in", "mph", "mi");
+const settings = citySettings("F", "mph", "in", "hpa", "mi");
 
 export default settings;

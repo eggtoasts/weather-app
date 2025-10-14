@@ -24,6 +24,8 @@ export default function mainScreen() {
   const fahrenheitButton = document.querySelector(".fahrenheit");
   const windMButton = document.querySelector(".wind.m");
   const windKMButton = document.querySelector(".wind.km");
+  const hpaButton = document.querySelector(".pressure.hpa");
+  const inhgButton = document.querySelector(".pressure.inhg");
 
   //Error message
   const errorPopup = document.querySelector(".invalid-city-pop-up");
@@ -62,6 +64,16 @@ export default function mainScreen() {
 
   windKMButton.addEventListener("click", (e) => {
     settings.windUnit = "kmh";
+    showDisplay(currentCity, data);
+  });
+
+  inhgButton.addEventListener("click", (e) => {
+    settings.pressureUnit = "inhg";
+    showDisplay(currentCity, data);
+  });
+
+  hpaButton.addEventListener("click", (e) => {
+    settings.pressureUnit = "hpa";
     showDisplay(currentCity, data);
   });
 

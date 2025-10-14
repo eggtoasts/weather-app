@@ -11,6 +11,8 @@
   padding: 0;
 
   font-family: "Roboto";
+  scrollbar-width: thin;
+  scrollbar-color: transparent transparent;
 
   /* border: var(--r); */
 }
@@ -27,12 +29,9 @@ body {
   display: grid;
 
   grid-template-rows: 100px 220px 1fr;
-
-  /* border: var(--b); */
 }
 
 header {
-  border: var(--b);
   display: flex;
 
   align-items: center;
@@ -51,7 +50,7 @@ h3 {
 h4 {
   font-size: 16px;
 
-  font-weight: 350;
+  font-weight: 450;
 }
 
 h5 {
@@ -69,6 +68,14 @@ h5 {
 
 .main-information > * {
   margin-top: 2px;
+}
+
+.highs.deg {
+  margin-right: 10px;
+}
+
+.lows.deg {
+  margin-right: 10px;
 }
 
 .wrapper {
@@ -91,7 +98,7 @@ h5 {
   height: 30px;
   border-style: none;
   border-radius: 50px;
-  border: 1px solid black;
+  border: 1.8px solid rgb(255, 255, 255);
 
   margin-left: 20px;
   transition: all 1s;
@@ -104,14 +111,31 @@ h5 {
 .settings {
   margin-left: auto;
   margin-right: 20px;
+
+  border: 1.8px solid white;
+  border-radius: 25px;
+
+  color: white;
+  display: flex;
+
+  justify-content: center;
+  align-items: center;
+
+  box-shadow: inset 0px 0px 1px 0.2px rgba(248, 248, 248, 0.877),
+    inset 0px 0px 10px 1px rgba(244, 248, 248, 0.126),
+    1.5px 1.5px 4px 0.2px rgba(48, 48, 48, 0.285);
+  background-color: rgba(197, 215, 255, 0.619);
 }
 
 #search-query {
   margin-left: 5px;
   height: 90%;
   width: 90%;
+  font-size: 16px;
 
+  background-color: transparent;
   border-style: none;
+  color: white;
 }
 
 input:focus {
@@ -150,7 +174,6 @@ button.settings {
   overflow: auto;
 
   padding: 20px;
-  border: 1px solid pink;
 
   justify-content: center;
 
@@ -162,6 +185,44 @@ button.settings {
     "daily-weather daily-weather humidity visibility sunrise averages";
 
   gap: 20px;
+}
+
+/* Props */
+
+.sun-shine {
+  z-index: -10;
+  position: fixed;
+  filter: blur(2px);
+  border-radius: 550px;
+
+  height: 550px;
+  width: 550px;
+  min-height: 550px;
+  min-width: 550px;
+  top: -50px;
+  left: -50px;
+
+  background-color: transparent;
+
+  box-shadow: 0px 4px 100px 20px #07a8ff8c, 0px 4px 170px 20px #5836ff7b,
+    0px 0px 50px 5px #22d3ff73, 5px 5px 40px 20px #70fff3a5,
+    0px 4px 40px 20px #faf1517e;
+}
+
+.sun {
+  z-index: -1;
+  filter: blur(10px);
+  border-radius: 100px;
+  position: fixed;
+  min-height: 100px;
+  min-width: 100px;
+  top: 150px;
+  left: 150px;
+
+  background-color: white;
+
+  box-shadow: 0px 4px 100px 20px #faff9e, 0px 4px 170px 20px #ffe39b,
+    inset 0px 0px 50px 5px #fcec91, 0px 4px 250px 168px #fffbb677;
 }
 
 /* General */
@@ -188,7 +249,50 @@ button.settings {
   content: "°";
 }
 
+/* STYLING */
+
+.title {
+  color: rgba(255, 255, 255, 0.61);
+}
+
+h1 {
+  color: white;
+  text-shadow: 1.5px 1.5px 4.5px rgba(79, 79, 87, 0.468);
+  font-weight: 350;
+  font-size: 50px;
+}
+
+h4,
+h2,
+div {
+  color: white;
+  text-shadow: 0.5px 0.5px 2.5px rgba(79, 79, 87, 0.468);
+}
+
+.temperature {
+  color: white;
+  text-shadow: 1.5px 1.5px 4.5px rgba(79, 79, 87, 0.468);
+  font-weight: 250;
+  font-size: 80px;
+}
+
+h3 {
+  color: white;
+  text-shadow: 1.5px 1.5px 4.5px rgba(79, 79, 87, 0.468);
+  font-weight: 450;
+}
+
+.box,
+.settings-dialog {
+  box-shadow: inset 0px 0px 1px 0.2px rgba(248, 248, 248, 0.877),
+    inset 0px 0px 10px 1px rgba(244, 248, 248, 0.126),
+    1.5px 1.5px 4px 0.2px rgba(48, 48, 48, 0.285);
+  background-color: rgba(197, 215, 255, 0.153);
+}
+
 .box {
+  backdrop-filter: blur(50px);
+
   position: relative;
   padding: 15px;
 
@@ -198,20 +302,52 @@ button.settings {
 
   display: flex;
   flex-direction: column;
+}
 
-  border: 1.3px solid black;
-  /* border-image: linear-gradient(96deg, #51adff 39%, #1590c9 100%); */
-  /* background-color: green; */
-  /* background: linear-gradient(to right, #e3e6e9 39%, #7cd6ff 100%); */
+body {
+  background: #2f91f4;
+
+  /* background: linear-gradient(
+    180deg,
+    rgb(33, 29, 53) 20%,
+    rgb(23, 22, 30) 100%
+  ); */
+
+  /* //Rainy */
+  /* background: linear-gradient(
+    180deg,
+    rgb(57, 67, 78) 0%,
+    rgb(123, 148, 163) 100%
+  ); */
+
+  /* Later in day */
+  /* background: linear-gradient(
+    180deg,
+    rgb(49, 106, 162) 0%,
+    rgb(111, 199, 253) 100%
+  ); */
+
+  background: linear-gradient(
+    180deg,
+    rgb(75, 160, 245) 0%,
+    rgba(130, 207, 255, 1) 100%
+  );
 }
 
 /* ERROR */
 
 .invalid-city-pop-up {
-  border: 1px solid red;
+  border: 1.8px solid red;
   border-radius: 25px;
   padding: 10px;
   margin-left: 10px;
+  background-color: rgba(255, 127, 127, 0.546);
+  margin-right: 10px;
+}
+
+.invalid-city-pop-up h4 {
+  color: rgb(217, 2, 2);
+  text-shadow: none;
 }
 
 /* -------- HOURLY  */
@@ -248,15 +384,23 @@ button.settings {
   /* color: #c5f0ffc6; */
 }
 
+.hour-item:hover {
+  border: 1px solid rgb(255, 255, 255);
+}
+
 .hour-item {
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
+  border: 1px solid transparent;
+
   border-radius: 20px;
   max-width: 40px;
+  min-width: 40px;
+  width: 40px;
 
   padding: 10px;
   flex: 1;
+  transition: all 0.5s ease;
 }
 
 /* -------- DAILY  */
@@ -280,10 +424,19 @@ button.settings {
 .daily-item {
   display: flex;
   padding: 10px;
-  border: 1px solid black;
-  border-radius: 10px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.331);
+  /* border-radius: 10px; */
 
   align-items: center;
+  transition: all 0.5s ease;
+}
+
+.daily-item:first-child {
+  font-weight: bold;
+}
+
+.daily-item:last-child {
+  border-bottom: none;
 }
 
 .daily.line {
@@ -294,19 +447,6 @@ button.settings {
 
 .daily-colored.line {
   position: absolute;
-
-  /* background: linear-gradient(
-    90deg,
-    rgb(44, 209, 250) 0%,
-    rgb(125, 247, 238) 50%,
-    rgb(125, 232, 159) 100%
-  ); */
-  /* background: linear-gradient(
-    90deg,
-    #fbff00 0%,
-    #ffbf00 50%,
-    #ff3d3d 100%
-  ); */
 
   align-self: center;
   width: 1px;
@@ -332,6 +472,7 @@ button.settings {
 .daily-min-temp {
   width: 40px;
   margin-right: 0px;
+  color: rgba(202, 239, 255, 0.824);
 }
 
 .daily-max-temp {
@@ -487,7 +628,7 @@ button.settings {
 }
 
 .wind-item ~ * {
-  border-top: 1px solid black;
+  border-top: 1px solid rgba(255, 255, 255, 0.434);
 }
 
 .wind-number,
@@ -522,7 +663,9 @@ button.settings {
   justify-content: center;
   flex-direction: column;
   z-index: 1;
-  background-color: white;
+  border-color: rgba(255, 255, 255, 0.208);
+  background-color: #8dc2ed;
+  box-shadow: 0px 0px 10.5px 2px rgba(0, 0, 0, 0.153);
 }
 
 .south,
@@ -550,7 +693,7 @@ button.settings {
   height: 7px;
   width: 0.3px;
   transform-origin: center;
-  background-color: rgba(128, 128, 128, 0.422);
+  background-color: rgba(255, 243, 243, 0.422);
   position: absolute;
 
   align-self: center;
@@ -559,7 +702,7 @@ button.settings {
 
 .compass-line.bold {
   width: 1px;
-  background-color: rgba(128, 128, 128);
+  background-color: rgba(255, 250, 250, 0.938);
 }
 
 /* ARROW */
@@ -568,8 +711,10 @@ button.settings {
 .arrow-line,
 .arrow-point,
 .arrow-point-left,
-.arrow-point-right {
+.arrow-point-right,
+.arrow-circle {
   z-index: -100;
+  background-color: rgb(255, 255, 255);
 }
 
 .arrow {
@@ -590,7 +735,6 @@ button.settings {
   justify-content: center;
 
   border-radius: 25px;
-  background-color: rgb(0, 0, 0);
 }
 
 .arrow-point {
@@ -606,7 +750,6 @@ button.settings {
   width: 2px;
   height: 10px;
   border-radius: 25px;
-  background-color: rgb(0, 0, 0);
 }
 
 .arrow-point-right {
@@ -623,7 +766,6 @@ button.settings {
   border-radius: 90px;
   position: absolute;
   transform: translateY(-48px);
-  background-color: rgb(0, 0, 0);
 }
 
 .test2 {
@@ -690,7 +832,7 @@ button.settings {
   height: 13px;
   position: absolute;
   border-radius: 20px;
-  border: 0.5px solid black;
+  border: 1.5px solid black;
   z-index: 1;
   background-color: white;
   transition: all 1s;
@@ -701,7 +843,7 @@ button.settings {
   height: 10px;
   position: absolute;
   border-radius: 20px;
-  background-color: rgb(210, 210, 210);
+  background-color: rgba(255, 255, 255, 0.911);
 }
 .pressure-text {
   display: flex;
@@ -748,14 +890,6 @@ button.settings {
   /* box-shadow: inset 0px 0px 20px 2px #8ccfff; */
 }
 
-body {
-  /* background: linear-gradient(
-    180deg,
-    rgba(47, 145, 244, 1) 0%,
-    rgba(108, 190, 241, 1) 98%
-  ); */
-}
-
 /* DIALOG */
 
 .settings-dialog {
@@ -767,11 +901,11 @@ body {
   width: 250px;
   height: 260px;
   border-radius: 25px;
-  border: 1px solid black;
+  /* background-color: #bed0e1; */
+  backdrop-filter: blur(20px);
 
   padding: 20px;
 
-  background-color: white;
   /* align-items: center;
   justify-content: center; */
 }
@@ -788,12 +922,14 @@ body {
 
 .settings-dialog button {
   border-style: none;
-}
+  color: white;
+  background-color: rgba(20, 19, 19, 0.167);
 
-.button-wrapper button {
   height: 30px;
   width: 40px;
   border-radius: 20px;
+  box-shadow: inset -1px -1px 0.5px 0.2px rgba(255, 255, 255, 0.283),
+    1px 1px 0.5px 0.2px rgba(0, 0, 0, 0.352);
 }
 
 .button-done-wrapper {

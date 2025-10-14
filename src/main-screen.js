@@ -28,6 +28,8 @@ export default function mainScreen() {
   const inhgButton = document.querySelector(".pressure.inhg");
   const directionMButton = document.querySelector(".dist.mi");
   const directionKMButton = document.querySelector(".dist.km");
+  const precipInButton = document.querySelector(".precip.in");
+  const precipMmButton = document.querySelector(".precip.mm");
 
   //Error message
   const errorPopup = document.querySelector(".invalid-city-pop-up");
@@ -89,6 +91,16 @@ export default function mainScreen() {
     showDisplay(currentCity, data);
   });
 
+  precipMmButton.addEventListener("click", (e) => {
+    settings.precipUnit = "mm";
+    showDisplay(currentCity, data);
+  });
+
+  precipInButton.addEventListener("click", (e) => {
+    settings.precipUnit = "in";
+    showDisplay(currentCity, data);
+  });
+
   async function getCity(query) {
     try {
       errorPopup.classList.add("hidden");
@@ -105,7 +117,7 @@ export default function mainScreen() {
       } catch (error) {
         console.log(error.stack + " " + "Could not create city.");
       }
-    } catch (erorr) {
+    } catch (error) {
       console.log(error.stack + " Error, could not fetch city.");
       errorPopup.classList.remove("hidden");
       return;

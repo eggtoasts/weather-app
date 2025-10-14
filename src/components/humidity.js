@@ -3,7 +3,7 @@ export default function humidity(currentCity) {
   const dew = document.querySelector(".humidity-dew");
 
   const update = function () {
-    humidityNumber.textContent = currentCity.humidity;
+    humidityNumber.textContent = currentCity.humidity + "%";
     dew.textContent = `The dew point is ${currentCity.dew} right now.`;
   };
 

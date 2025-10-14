@@ -21,7 +21,7 @@ function changeGradient(minTemp, maxTemp, coloredLine) {
   } else if (maxTemp >= 65) {
     //yellow
     endGradient = "#fff426ff";
-  } else if (minmaxTempTemp >= 60) {
+  } else if (maxTemp >= 60) {
     //green
     endGradient = "#D2E864";
   } else if (maxTemp >= 50) {
@@ -96,6 +96,8 @@ export function createDayElement(currentDay, min, max) {
   dailyMax.setAttribute("class", "daily-max-temp deg");
 
   dailyTitle.textContent = formatToWeekdays(date);
+
+  console.log(formatToWeekdays(date));
 
   //If user picked "C" in settings, display out the Day's celsius temp.
   dailyMin.textContent =

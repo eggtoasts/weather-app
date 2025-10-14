@@ -8,7 +8,7 @@ function findMin(daysArray) {
     mn = Math.min(mn, daysArray[i].tempmin);
   }
   console.log(mn);
-  return mn;
+  return Math.round(mn);
 }
 
 function findMax(daysArray) {
@@ -17,14 +17,14 @@ function findMax(daysArray) {
   for (let i = 0; i < 15; i++) {
     mx = Math.max(mx, daysArray[i].tempmax);
   }
-  return mx;
+  return Math.round(mx);
 }
 
 function apiHourToHourClass(hourQuery, currentDateTime) {
   return new Hour(
     hourQuery.datetime || "Now",
     hourQuery.icon,
-    hourQuery.temp,
+    Math.round(hourQuery.temp),
     hourQuery.humidity,
     hourQuery.dew,
     hourQuery.precip,
@@ -46,15 +46,15 @@ function apiDayToDayClass(dayQuery, currentDate, currentDateTime, query) {
   const day = new Day(
     dayQuery.datetime,
     dayQuery.icon,
-    dayQuery.tempmin,
-    dayQuery.tempmax
+    Math.round(dayQuery.tempmin),
+    Math.round(dayQuery.tempmax)
   );
 
   if (dayQuery.datetime === currentDate) {
     const currentDayHour = new Hour(
       query.currentConditions.datetime,
       query.currentConditions.icon,
-      query.currentConditions.temp,
+      Math.round(query.currentConditions.temp),
       query.currentConditions.humidity,
       query.currentConditions.dew,
       query.currentConditions.precip,
@@ -104,7 +104,7 @@ export let initCity = function (query, hour, dayNumber) {
   const weatherData = {
     //Main Info
     name: query.resolvedAddress,
-    temperature: currentSource.temp,
+    temperature: Math.round(currentSource.temp),
     weatherCondition:
       currentSource.conditions || query.days[dayNumber].conditions,
     weatherDescription: query.days[dayNumber].description,
@@ -115,8 +115,8 @@ export let initCity = function (query, hour, dayNumber) {
     //Other properties
     precipitation: currentSource.precip,
     precipProbability: query.days[dayNumber].precipprob,
-    lowTemperature: query.days[dayNumber].tempmin,
-    highTemperature: query.days[dayNumber].tempmax,
+    lowTemperature: Math.round(query.days[dayNumber].tempmin),
+    highTemperature: Math.round(query.days[dayNumber].tempmax),
     humidity: currentSource.humidity,
     dew: currentSource.dew,
     sunrise: query.currentConditions.sunrise,
@@ -129,9 +129,9 @@ export let initCity = function (query, hour, dayNumber) {
     moonPhase: query.currentConditions.moonphase,
     uvIndex: currentSource.uvindex,
     airQuality: currentSource.aqius,
-    feelsLike: query.currentConditions.feelslike,
-    feelsLikeMax: query.days[dayNumber].feelslikemax,
-    feelsLikeMin: query.days[dayNumber].feelslikemin,
+    feelsLike: Math.round(query.currentConditions.feelslike),
+    feelsLikeMax: Math.round(query.days[dayNumber].feelslikemax),
+    feelsLikeMin: Math.round(query.days[dayNumber].feelslikemin),
 
     severeRisk: query.days[dayNumber].severerisk,
 

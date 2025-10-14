@@ -139,6 +139,8 @@ export let initCity = function (query, hour, dayNumber) {
       apiDayToDayClass(d, currentDate, currentDateTime, query)
     ),
 
+    alertArray: query.alerts,
+
     minTempOfAll15Days: findMin(query.days),
     maxTempOfAll15Days: findMax(query.days),
   };

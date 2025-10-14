@@ -39,6 +39,7 @@ header {
 }
 
 h1 {
+  /* font-size: clamp(2.5rem, 3vw, 4rem); */
 }
 
 h2 {
@@ -164,6 +165,10 @@ button.settings {
 .title {
   display: flex;
   align-items: center;
+}
+
+.title .iconify {
+  margin-right: 5px;
 }
 
 .description {
@@ -382,6 +387,7 @@ button.settings {
 
 .weather-alert {
   grid-area: weather-alert;
+  overflow-y: auto;
 }
 
 /* UV INDEX */

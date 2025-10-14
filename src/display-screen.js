@@ -11,6 +11,7 @@ import moonPhase from "./components/moonphase";
 import severeRisk from "./components/severerisk";
 import days from "./components/days";
 import hours from "./components/hours";
+import weatherAlert from "./components/weatheralert";
 
 export default function showDisplay(currentCity, query) {
   //Main information (City name, temperature, etc...)
@@ -63,6 +64,11 @@ export default function showDisplay(currentCity, query) {
   const dm = days(currentCity);
   dm.update();
 
+  //Display hours
   const hom = hours(query, currentCity);
   hom.update();
+
+  //Display weather alert
+  const wam = weatherAlert(currentCity);
+  wam.update();
 }

@@ -12,10 +12,10 @@ import severeRisk from "./components/severerisk";
 import days from "./components/days";
 import hours from "./components/hours";
 
-export default function showDisplay(setting, currentCity, query) {
+export default function showDisplay(currentCity, query) {
   //Main information (City name, temperature, etc...)
   //Display Main Information
-  const mim = mainInformation(currentCity, setting);
+  const mim = mainInformation(currentCity);
   mim.update();
 
   //Display humidity
@@ -35,16 +35,16 @@ export default function showDisplay(setting, currentCity, query) {
   fm.update();
 
   //Display wind
-  const wm = wind(currentCity, setting);
+  const wm = wind(currentCity);
   wm.update();
   console.log(window.screen);
 
   //Display pressure
-  const prem = pressure(currentCity, setting);
+  const prem = pressure(currentCity);
   prem.update();
 
   //Display visibility
-  const vm = visibility(currentCity, setting);
+  const vm = visibility(currentCity);
   vm.update();
 
   //Display UV Index
@@ -61,8 +61,8 @@ export default function showDisplay(setting, currentCity, query) {
 
   //Display days
   const dm = days(currentCity);
-  // dm.update();
+  dm.update();
 
-  const hom = hours(query, currentCity, setting);
-  // hom.update();
+  const hom = hours(query, currentCity);
+  hom.update();
 }

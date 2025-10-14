@@ -1,12 +1,12 @@
 import showDisplay from "./display-screen";
 import { API_KEY } from "./env";
 import { initCity } from "./initCity";
-import citySettings from "./settingsState";
 import ripCafeWifiJSON from "./whenCafeWifiDies.json";
 
 import createCompass from "./sub-components/createCompass";
 import createPressureMeter from "./sub-components/createPressureMeter";
 
+import settings from "./settingsState";
 export default function mainScreen() {
   //Load in sub components
   createCompass();
@@ -29,14 +29,7 @@ export default function mainScreen() {
   let currentCity = "orlando";
   //    put up a default city.
 
-  //Create settings
-  let setting = citySettings();
-
   getCity(currentCity);
-
-  //initialize setting to default
-  setting.init("F", "M", "IN", "M", "M");
-
   settingsButton.addEventListener("click", (e) => {
     if (!settingsDialog.classList.contains("hidden")) {
       settingsDialog.classList.add("hidden");
@@ -50,23 +43,24 @@ export default function mainScreen() {
   });
 
   celsiusButton.addEventListener("click", (e) => {
-    setting.setTemperatureUnit("C");
-    showDisplay(setting, currentCity);
+    settings.temperatureUnit = "C";
+    console.log(settings);
+    showDisplay(currentCity);
   });
 
   fahrenheitButton.addEventListener("click", (e) => {
-    setting.setTemperatureUnit("F");
-    showDisplay(setting, currentCity);
+    settings.temperatureUnit = "F";
+    showDisplay(currentCity);
   });
 
   windMButton.addEventListener("click", (e) => {
-    setting.setWindUnit("M");
-    showDisplay(setting, currentCity);
+    settings.windUnit = "";
+    showDisplay(currentCity);
   });
 
   windKMButton.addEventListener("click", (e) => {
-    setting.setWindUnit("KM");
-    showDisplay(setting, currentCity);
+    settings.windUnit = "";
+    showDisplay(currentCity);
   });
 
   async function getCity(query) {
@@ -81,7 +75,7 @@ export default function mainScreen() {
         console.log(data);
         currentCity = initCity(data, null, 0);
         console.log(currentCity);
-        showDisplay(setting, currentCity, data);
+        showDisplay(currentCity, data);
       } catch (error) {
         console.log(error.stack + " " + "Could not create city.");
       }
@@ -93,7 +87,6 @@ export default function mainScreen() {
   }
 
   //Add event listener to the query search.
-
   const searchBar = document.querySelector("#search-query");
 
   searchBar.addEventListener("keypress", (e) => {

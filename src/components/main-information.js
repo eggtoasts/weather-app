@@ -1,5 +1,6 @@
 import { convertToCelsius } from "../helpers/convert";
-export default function mainInformation(currentCity, setting) {
+import settings from "../settingsState";
+export default function mainInformation(currentCity) {
   const cityName = document.querySelector(".current-city-title");
   const temperature = document.querySelector(".temperature");
   const weatherCondition = document.querySelector(".weather");
@@ -20,12 +21,13 @@ export default function mainInformation(currentCity, setting) {
   };
 
   const update = function () {
+    console.log(settings);
     let temp = currentCity.temperature;
-    const unit = setting.getTemperatureUnit();
+    // const unit = setting.getTemperatureUnit();
 
-    if (unit === "C") {
-      temp = convertToCelsius(temp);
-    }
+    // if (unit === "C") {
+    //   temp = convertToCelsius(temp);
+    // }
     cityName.textContent = capitalizeName(currentCity.name);
     temperature.textContent = temp;
     currentTime.textContent = currentCity.currentDate;

@@ -1,5 +1,5 @@
 import { convertToKm } from "../helpers/convert";
-export default function wind(currentCity, setting) {
+export default function wind(currentCity) {
   const windGust = document.querySelector(".wind-gusts-number");
   const windSpeed = document.querySelector(".wind-number");
   const windDir = document.querySelector(".wind-dir-number");
@@ -12,19 +12,12 @@ export default function wind(currentCity, setting) {
     arrow.style.transform = `rotate(${dir}deg)`;
   }
   const update = function () {
-    let unit = setting.getWindUnit() == "KM" ? "km/h" : "mph";
     let gust = currentCity.windGust;
     let speed = currentCity.windSpeed;
     let dir = currentCity.windDirection;
-    console.log("wind type is " + setting.getWindUnit());
 
-    if (unit == "km/h") {
-      gust = convertToKm(gust);
-      speed = convertToKm(speed);
-      windUnitText.textContent = "km/h";
-    }
-    windGust.textContent = gust + " " + unit;
-    windSpeed.textContent = speed + " " + unit;
+    windGust.textContent = gust;
+    windSpeed.textContent = speed;
     windDir.textContent = dir;
     windCircleNumber.textContent = speed;
     moveArrow(dir);

@@ -1,6 +1,6 @@
 import { convertToInHg } from "../helpers/convert";
 
-export default function pressure(currentCity, setting) {
+export default function pressure(currentCity) {
   const pressureMarker = document.querySelector(".pressure-marker");
   const pressureMeasurement = document.querySelector(".preasure-measurement");
   const pressureNumber = document.querySelector(".pressure-number");

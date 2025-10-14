@@ -1,4 +1,4 @@
-export default function visibility(currentCity, currentMeasure) {
+export default function visibility(currentCity) {
   const visibilityNumber = document.querySelector(".visibility-number");
   const visibilityDescription = document.querySelector(
     ".visibility-description"

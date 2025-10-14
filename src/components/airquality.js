@@ -27,7 +27,8 @@ export default function airQuality(currentCity) {
   }
 
   const update = function () {
-    const aqi = currentCity.airQuality;
+    //The api for some reason started to give null values for air quality
+    const aqi = currentCity.airQuality | 1;
     airQualityNumber.textContent = aqi;
     moveCircle(aqi);
     airQualityCondition.textContent = updateCondition(aqi);

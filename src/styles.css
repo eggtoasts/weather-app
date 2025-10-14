@@ -305,11 +305,14 @@ button.settings {
 .daily-min-max {
   display: flex;
   align-items: center;
+
   min-width: 200px;
+  justify-content: center;
 }
 
 .daily-icon {
   font-size: 19px;
+  margin-right: 25px;
 }
 
 .daily-min-temp {

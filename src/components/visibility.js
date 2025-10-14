@@ -1,3 +1,5 @@
+import settings from "../settingsState";
+import { convertToKm } from "../helpers/convert";
 export default function visibility(currentCity) {
   const visibilityNumber = document.querySelector(".visibility-number");
   const visibilityDescription = document.querySelector(
@@ -15,9 +17,10 @@ export default function visibility(currentCity) {
   };
 
   const update = function () {
-    const visibility = currentCity.visibility;
-    visibilityNumber.textContent = visibility;
+    let visibility = currentCity.visibility;
     visibilityDescription.textContent = updateVisibilityDescription(visibility);
+    if (settings.distanceUnit === "km") visibility = convertToKm(visibility);
+    visibilityNumber.textContent = visibility + " " + settings.distanceUnit;
   };
 
   return { update };

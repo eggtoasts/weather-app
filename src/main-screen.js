@@ -26,8 +26,8 @@ export default function mainScreen() {
   //Error message
   const errorPopup = document.querySelector(".invalid-city-pop-up");
 
+  //Put up a default city.
   let currentCity = "orlando";
-  //    put up a default city.
 
   getCity(currentCity);
   settingsButton.addEventListener("click", (e) => {
@@ -54,12 +54,12 @@ export default function mainScreen() {
   });
 
   windMButton.addEventListener("click", (e) => {
-    settings.windUnit = "";
+    settings.windUnit = "mph";
     showDisplay(currentCity);
   });
 
   windKMButton.addEventListener("click", (e) => {
-    settings.windUnit = "";
+    settings.windUnit = "kmh";
     showDisplay(currentCity);
   });
 

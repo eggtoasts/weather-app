@@ -1,3 +1,5 @@
+import { convertToCelsius } from "../helpers/convert";
+import settings from "../settingsState";
 export default function feelslike(currentCity) {
   const feelsLikeNumber = document.querySelector(".feels-like-number");
   const feelsLikeTemp = document.querySelector(".feels-like-actual");
@@ -16,13 +18,18 @@ export default function feelslike(currentCity) {
   }
 
   const update = function () {
-    const feelslike = currentCity.feelsLike;
-    const temp = currentCity.temperature;
-    feelsLikeNumber.textContent = feelslike;
+    let feelslike = currentCity.feelsLike;
+    let temp = currentCity.temperature;
+
+    if (settings.temperatureUnit === "C") {
+      temp = convertToCelsius(temp);
+      feelslike = convertToCelsius(feelslike);
+    }
 
     //If the feelslike and actual temp is equal, don't display anything
     feelsLikeTemp.textContent =
       feelslike !== temp ? "Actual: " + temp + "°" : " ";
+    feelsLikeNumber.textContent = feelslike;
     feelsLikeDescription.textContent = updateDescription(feelslike, temp);
   };
 

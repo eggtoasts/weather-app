@@ -1,5 +1,6 @@
 import { setWeatherIcon } from "../helpers/icon";
-
+import settings from "../settingsState";
+import { convertToCelsius } from "../helpers/convert";
 function changeGradient(minTemp, maxTemp, coloredLine) {
   let startGradient = "";
   let endGradient = "";
@@ -94,11 +95,14 @@ export function createDayElement(currentDay, min, max) {
   dailyMax.setAttribute("class", "daily-max-temp deg");
 
   dailyTitle.textContent = date;
-  dailyMin.textContent = minTemp;
-  dailyMax.textContent = maxTemp;
+
+  //If user picked "C" in settings, display out the Day's celsius temp.
+  dailyMin.textContent =
+    settings.temperatureUnit === "C" ? convertToCelsius(minTemp) : minTemp;
+  dailyMax.textContent =
+    settings.temperatureUnit === "C" ? convertToCelsius(maxTemp) : maxTemp;
 
   const start = minTemp - min;
-  const end = max - maxTemp;
 
   //We convert the width to match the 100px width unit
   const width = (maxTemp - minTemp) * (100 / (max - min));

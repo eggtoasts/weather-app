@@ -1,7 +1,9 @@
 import { initCity } from "../initCity";
 import showDisplay from "../display-screen";
 import { convertTo12Hour } from "../helpers/time";
+import { convertToCelsius } from "../helpers/convert";
 import { setWeatherIcon } from "../helpers/icon";
+import settings from "../settingsState";
 export function createHourElement(query, currentHour, now) {
   console.log(currentHour);
   const time = currentHour.time;
@@ -18,7 +20,8 @@ export function createHourElement(query, currentHour, now) {
   hourTemp.setAttribute("class", "hour-temp deg");
 
   hourTitle.textContent = convertTo12Hour(time);
-  hourTemp.textContent = temp;
+  hourTemp.textContent =
+    settings.temperatureUnit === "C" ? convertToCelsius(temp) : temp;
 
   hourItem.appendChild(hourTitle);
   hourItem.appendChild(hourIcon);

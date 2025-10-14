@@ -12,6 +12,8 @@ export default function mainScreen() {
   createCompass();
   createPressureMeter();
 
+  let data = "";
+
   //Settings dialog
   const closeButton = document.querySelector(".done-button");
   const settingsButton = document.querySelector(".settings");
@@ -45,22 +47,22 @@ export default function mainScreen() {
   celsiusButton.addEventListener("click", (e) => {
     settings.temperatureUnit = "C";
     console.log(settings);
-    showDisplay(currentCity);
+    showDisplay(currentCity, data);
   });
 
   fahrenheitButton.addEventListener("click", (e) => {
     settings.temperatureUnit = "F";
-    showDisplay(currentCity);
+    showDisplay(currentCity, data);
   });
 
   windMButton.addEventListener("click", (e) => {
     settings.windUnit = "mph";
-    showDisplay(currentCity);
+    showDisplay(currentCity, data);
   });
 
   windKMButton.addEventListener("click", (e) => {
     settings.windUnit = "kmh";
-    showDisplay(currentCity);
+    showDisplay(currentCity, data);
   });
 
   async function getCity(query) {
@@ -68,7 +70,7 @@ export default function mainScreen() {
       errorPopup.classList.add("hidden");
       let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
       const getCity = await fetch(apiLink);
-      const data = await getCity.json();
+      data = await getCity.json();
       // const data = ripCafeWifiJSON;
 
       try {

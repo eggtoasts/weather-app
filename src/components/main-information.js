@@ -33,6 +33,8 @@ export default function mainInformation(currentCity) {
     }
     cityName.textContent = capitalizeName(currentCity.name);
     temperature.textContent = temp;
+
+    //Convert this to an actual Date
     currentTime.textContent = currentCity.currentDate;
     weatherCondition.textContent = currentCity.weatherCondition;
     highTempText.textContent = highTemp;

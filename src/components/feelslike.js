@@ -19,7 +19,10 @@ export default function feelslike(currentCity) {
     const feelslike = currentCity.feelsLike;
     const temp = currentCity.temperature;
     feelsLikeNumber.textContent = feelslike;
-    feelsLikeTemp.textContent = temp;
+
+    //If the feelslike and actual temp is equal, don't display anything
+    feelsLikeTemp.textContent =
+      feelslike !== temp ? "Actual: " + temp + "°" : " ";
     feelsLikeDescription.textContent = updateDescription(feelslike, temp);
   };
 

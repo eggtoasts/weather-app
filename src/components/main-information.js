@@ -1,5 +1,6 @@
 import { convertToCelsius } from "../helpers/convert";
 import settings from "../settingsState";
+import { formatDate } from "../helpers/date";
 export default function mainInformation(currentCity) {
   const cityName = document.querySelector(".current-city-title");
   const temperature = document.querySelector(".temperature");
@@ -35,7 +36,7 @@ export default function mainInformation(currentCity) {
     temperature.textContent = temp;
 
     //Convert this to an actual Date
-    currentTime.textContent = currentCity.currentDate;
+    currentTime.textContent = formatDate(currentCity.currentDate);
     weatherCondition.textContent = currentCity.weatherCondition;
     highTempText.textContent = highTemp;
     lowTempText.textContent = lowTemp;

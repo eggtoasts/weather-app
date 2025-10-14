@@ -1,6 +1,7 @@
 import { setWeatherIcon } from "../helpers/icon";
 import settings from "../settingsState";
 import { convertToCelsius } from "../helpers/convert";
+import { formatToWeekdays } from "../helpers/date";
 function changeGradient(minTemp, maxTemp, coloredLine) {
   let startGradient = "";
   let endGradient = "";
@@ -94,7 +95,7 @@ export function createDayElement(currentDay, min, max) {
   dailyMin.setAttribute("class", "daily-min-temp deg");
   dailyMax.setAttribute("class", "daily-max-temp deg");
 
-  dailyTitle.textContent = date;
+  dailyTitle.textContent = formatToWeekdays(date);
 
   //If user picked "C" in settings, display out the Day's celsius temp.
   dailyMin.textContent =

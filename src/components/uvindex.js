@@ -1,6 +1,13 @@
 export default function uvIndex(currentCity) {
   const uvNumber = document.querySelector(".uv-index-number");
   const uvCondition = document.querySelector(".uv-index-condition");
+  const uvCircle = document.querySelector(".uv-index.circle");
+  console.log(uvCircle);
+
+  function moveCircle(uvindex) {
+    if (uvindex >= 15) uvindex = 15;
+    uvCircle.style.transform = `translateX(${uvindex * 9.7}px)`;
+  }
 
   function updateUvIndexCondition(uv) {
     if (uv <= 2) {
@@ -19,6 +26,7 @@ export default function uvIndex(currentCity) {
     const uvindex = currentCity.uvIndex;
     uvNumber.textContent = uvindex;
     uvCondition.textContent = updateUvIndexCondition(uvindex);
+    moveCircle(uvindex);
   };
   return { update };
 }

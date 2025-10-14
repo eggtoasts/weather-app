@@ -127,7 +127,7 @@ export let initCity = function (query, hour, dayNumber) {
     pressure: currentSource.pressure,
     visibility: currentSource.visibility,
     moonPhase: query.currentConditions.moonphase,
-    uvIndex: query.currentConditions.uvindex,
+    uvIndex: currentSource.uvindex,
     airQuality: currentSource.aqius,
     feelsLike: query.currentConditions.feelslike,
     feelsLikeMax: query.days[dayNumber].feelslikemax,

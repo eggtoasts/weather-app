@@ -152,9 +152,9 @@ button.settings {
   grid-template-areas:
     "hourly-weather hourly-weather hourly-weather hourly-weather weather-alert weather-alert"
     "daily-weather daily-weather wind wind weather-alert weather-alert"
-    "daily-weather daily-weather air-quality air-quality uv-index sunrise"
+    "daily-weather daily-weather air-quality air-quality uv-index pressure"
     "daily-weather daily-weather severe-risk moon-phase precip feels-like"
-    "daily-weather daily-weather humidity visibility pressure averages";
+    "daily-weather daily-weather humidity visibility sunrise averages";
 
   gap: 20px;
 }
@@ -287,12 +287,12 @@ button.settings {
     rgb(125, 247, 238) 50%,
     rgb(125, 232, 159) 100%
   ); */
-  background: linear-gradient(
+  /* background: linear-gradient(
     90deg,
-    rgba(251, 255, 0, 1) 0%,
-    rgba(255, 191, 0, 1) 50%,
-    rgba(255, 61, 61, 1) 100%
-  );
+    #fbff00 0%,
+    #ffbf00 50%,
+    #ff3d3d 100%
+  ); */
 
   align-self: center;
   width: 1px;

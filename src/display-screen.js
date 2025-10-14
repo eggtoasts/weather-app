@@ -13,6 +13,7 @@ import days from "./components/days";
 import hours from "./components/hours";
 import weatherAlert from "./components/weatheralert";
 import sunriseSunset from "./components/sunrise-sunset";
+import average from "./components/average";
 export default function showDisplay(currentCity, query) {
   //Main information (City name, temperature, etc...)
   //Display Main Information
@@ -73,7 +74,10 @@ export default function showDisplay(currentCity, query) {
   wam.update();
 
   //Display sunrise/sunset hours
-
   const ssm = sunriseSunset(currentCity);
   ssm.update();
+
+  //Display average high temps
+  const avm = average(currentCity);
+  avm.update();
 }

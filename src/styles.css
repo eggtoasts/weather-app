@@ -67,6 +67,10 @@ h5 {
   /* mask-image: linear-gradient(to bottom, black, transparent); */
 }
 
+.main-information > * {
+  margin-top: 2px;
+}
+
 .wrapper {
   grid-row: 3 / 4;
   /* border: 1px solid black; */
@@ -165,6 +169,7 @@ button.settings {
 .title {
   display: flex;
   align-items: center;
+  margin-bottom: 5px;
 }
 
 .title .iconify {
@@ -211,6 +216,10 @@ button.settings {
 
 /* -------- HOURLY  */
 .hourly-weather {
+}
+
+.hourly-weather-description {
+  margin-bottom: 5px;
 }
 .hourly-container {
   margin-top: 3px;
@@ -385,9 +394,17 @@ button.settings {
   );
 }
 
+/* WEATHER ALERTS */
+
 .weather-alert {
   grid-area: weather-alert;
   overflow-y: auto;
+}
+
+.weather-alert-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 /* UV INDEX */
@@ -693,6 +710,23 @@ button.settings {
 
 .pressure-low {
   margin-right: 40px;
+}
+
+/* AVERAGES */
+.average-summary {
+  display: flex;
+  flex-direction: column;
+}
+
+.average-today-container,
+.average-week-container {
+  display: flex;
+}
+
+.average-week-number,
+.average-today-number {
+  margin-left: auto;
+  font-weight: bold;
 }
 
 .averages {

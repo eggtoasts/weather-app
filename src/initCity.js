@@ -1,6 +1,17 @@
 import { Day } from "./classes/Day";
 import { Hour } from "./classes/Hour";
 
+function findAverageHigh(daysArray) {
+  let sum = 0;
+
+  for (let i = 0; i < 15; i++) {
+    console.log(daysArray[i].tempmax);
+    sum += daysArray[i].tempmax;
+  }
+
+  return Math.round(sum / 15);
+}
+
 function findMin(daysArray) {
   let mn = 200;
 
@@ -143,6 +154,7 @@ export let initCity = function (query, hour, dayNumber) {
 
     minTempOfAll15Days: findMin(query.days),
     maxTempOfAll15Days: findMax(query.days),
+    averageHigh: findAverageHigh(query.days),
   };
 
   return weatherData;

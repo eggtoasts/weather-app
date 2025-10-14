@@ -12,7 +12,7 @@ import severeRisk from "./components/severerisk";
 import days from "./components/days";
 import hours from "./components/hours";
 import weatherAlert from "./components/weatheralert";
-
+import sunriseSunset from "./components/sunrise-sunset";
 export default function showDisplay(currentCity, query) {
   //Main information (City name, temperature, etc...)
   //Display Main Information
@@ -71,4 +71,9 @@ export default function showDisplay(currentCity, query) {
   //Display weather alert
   const wam = weatherAlert(currentCity);
   wam.update();
+
+  //Display sunrise/sunset hours
+
+  const ssm = sunriseSunset(currentCity);
+  ssm.update();
 }

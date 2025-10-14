@@ -1,6 +1,25 @@
 import { Day } from "./classes/Day";
 import { Hour } from "./classes/Hour";
 
+function findMin(daysArray) {
+  let mn = 200;
+
+  for (let i = 0; i < 15; i++) {
+    mn = Math.min(mn, daysArray[i].tempmin);
+  }
+  console.log(mn);
+  return mn;
+}
+
+function findMax(daysArray) {
+  let mx = -200;
+
+  for (let i = 0; i < 15; i++) {
+    mx = Math.max(mx, daysArray[i].tempmax);
+  }
+  return mx;
+}
+
 function apiHourToHourClass(hourQuery, currentDateTime) {
   return new Hour(
     hourQuery.datetime || "Now",
@@ -119,6 +138,9 @@ export let initCity = function (query, hour, dayNumber) {
     daysArray: query.days.map((d) =>
       apiDayToDayClass(d, currentDate, currentDateTime, query)
     ),
+
+    minTempOfAll15Days: findMin(query.days),
+    maxTempOfAll15Days: findMax(query.days),
   };
 
   return weatherData;

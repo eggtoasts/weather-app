@@ -1,6 +1,6 @@
 import { setWeatherIcon } from "../helpers/icon";
 
-export function createDayElement(currentDay) {
+export function createDayElement(currentDay, min, max) {
   console.log(currentDay);
   const date = currentDay.date;
   const icon = currentDay.iconType;
@@ -29,6 +29,18 @@ export function createDayElement(currentDay) {
   dailyTitle.textContent = date;
   dailyMin.textContent = minTemp;
   dailyMax.textContent = maxTemp;
+
+  const start = minTemp - min;
+  const end = max - maxTemp;
+
+  //We convert the width to match the 100px width unit
+  const width = (maxTemp - minTemp) * (100 / (max - min));
+
+  //YES!!! I GOT IT
+  coloredLine.style.transform = `translateX(${
+    -50 + width / 2 + start * (100 / (max - min))
+  }px)`;
+  coloredLine.style[`width`] = `${width}px`;
 
   dayItem.appendChild(dailyTitle);
   dayItem.appendChild(dailyIcon);

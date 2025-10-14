@@ -8,9 +8,14 @@ export default function days(currentCity) {
 
   const daysArray = currentCity.daysArray;
 
+  const min = currentCity.minTempOfAll15Days;
+  const max = currentCity.maxTempOfAll15Days;
+
+  console.log(min + " " + max);
+
   for (let i = 0; i < 15; i++) {
     //daysArray[i];
-    const element = createDayElement(daysArray[i]);
+    const element = createDayElement(daysArray[i], min, max);
 
     dailyContainer.appendChild(element);
   }

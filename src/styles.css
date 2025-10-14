@@ -280,17 +280,24 @@ button.settings {
 
 .daily-colored.line {
   position: absolute;
-  background: #fbff00;
+
+  /* background: linear-gradient(
+    90deg,
+    rgb(44, 209, 250) 0%,
+    rgb(125, 247, 238) 50%,
+    rgb(125, 232, 159) 100%
+  ); */
   background: linear-gradient(
     90deg,
-    rgba(251, 255, 0, 1) 25%,
+    rgba(251, 255, 0, 1) 0%,
     rgba(255, 191, 0, 1) 50%,
-    rgba(255, 61, 61, 1) 75%
+    rgba(255, 61, 61, 1) 100%
   );
 
   align-self: center;
-  width: 10px;
-  transform: translateX(-30px);
+  width: 1px;
+  transform: translateX(0px);
+  transform-origin: left;
 
   border: none;
 }
@@ -306,7 +313,8 @@ button.settings {
 }
 
 .daily-min-temp {
-  margin-right: 10px;
+  width: 40px;
+  margin-right: 0px;
 }
 
 .daily-max-temp {

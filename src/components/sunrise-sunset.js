@@ -1,8 +1,5 @@
 import { convertTo12Hour } from "../helpers/time";
 export default function sunriseSunset(currentCity) {
-  console.log(currentCity.sunrise);
-  console.log(currentCity.currentDateTime);
-
   const sunriseTitle = document.querySelector(".sunrise-title");
   const sunriseNumber = document.querySelector(".sunrise-number");
   const subText = document.querySelector(".sunrise-diff-number");

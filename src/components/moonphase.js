@@ -26,7 +26,6 @@ export default function moonPhase(currentCity) {
 
   const update = function () {
     const phase = currentCity.moonPhase;
-    console.log(phase);
     const moonPhase = convertMoonPhase(phase);
     moonPhaseType.textContent = moonPhase;
 

@@ -5,7 +5,6 @@ import { convertToCelsius } from "../helpers/convert";
 import { setWeatherIcon } from "../helpers/icon";
 import settings from "../settingsState";
 export function createHourElement(query, currentHour, now) {
-  console.log(currentHour);
   const time = currentHour.time;
   const iconType = currentHour.iconType;
   const temp = currentHour.temp;
@@ -33,7 +32,6 @@ export function createHourElement(query, currentHour, now) {
 
   //Add event
   hourItem.addEventListener("click", (e) => {
-    console.log(currentHour);
     const currentCityHour = initCity(query, currentHour, 0);
     showDisplay(currentCityHour, query);
     //works

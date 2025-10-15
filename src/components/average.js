@@ -18,10 +18,6 @@ export default function airQuality(currentCity) {
     const diff = todayMaxTemp - averageWeekMaxTemp;
 
     //Update the texts
-
-    console.log(currentCity.highTemperature);
-    console.log(currentCity.averageHigh);
-
     averagesDiffNumberText.textContent = diff;
     averageTodayNumberText.textContent = "H: " + todayMaxTemp;
     smallAverageNumberText.textContent = "H: " + averageWeekMaxTemp;

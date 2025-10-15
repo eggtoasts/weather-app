@@ -2,7 +2,6 @@ export default function uvIndex(currentCity) {
   const uvNumber = document.querySelector(".uv-index-number");
   const uvCondition = document.querySelector(".uv-index-condition");
   const uvCircle = document.querySelector(".uv-index.circle");
-  console.log(uvCircle);
 
   function moveCircle(uvindex) {
     if (uvindex >= 15) uvindex = 15;

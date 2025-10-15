@@ -19,7 +19,6 @@ export default function mainInformation(currentCity) {
   };
 
   const update = function () {
-    console.log(settings);
     let temp = currentCity.temperature;
     let lowTemp = currentCity.highTemperature;
     let highTemp = currentCity.lowTemperature;

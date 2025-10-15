@@ -64,13 +64,10 @@ function changeGradient(minTemp, maxTemp, coloredLine) {
     startGradient = "#07bbedff";
   }
 
-  console.log(endGradient + " " + startGradient);
-
   coloredLine.style.background = `linear-gradient(90deg,${startGradient} 0%, ${endGradient} 100%)`;
 }
 
 export function createDayElement(currentDay, min, max) {
-  console.log(currentDay);
   const date = currentDay.date;
   const icon = currentDay.iconType;
   const minTemp = currentDay.minTemp;
@@ -96,8 +93,6 @@ export function createDayElement(currentDay, min, max) {
   dailyMax.setAttribute("class", "daily-max-temp deg");
 
   dailyTitle.textContent = formatToWeekdays(date);
-
-  console.log(formatToWeekdays(date));
 
   //If user picked "C" in settings, display out the Day's celsius temp.
   dailyMin.textContent =

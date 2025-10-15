@@ -4,8 +4,6 @@ export default function airQuality(currentCity) {
   const airQualityCondition = document.querySelector(".air-quality-condition");
   //Moves the air quality circle.
 
-  console.log(airQualityCircle);
-
   function updateCondition(aqi) {
     if (aqi >= 0 && aqi <= 50) {
       return "Good Air Quality";

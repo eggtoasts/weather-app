@@ -14,7 +14,12 @@ import hours from "./components/hours";
 import weatherAlert from "./components/weatheralert";
 import sunriseSunset from "./components/sunrise-sunset";
 import average from "./components/average";
+import changeBackground from "./components/changeBackground";
 export default function showDisplay(currentCity, query) {
+  //Change background based on time
+  const cbm = changeBackground(currentCity);
+  cbm.update();
+
   //Main information (City name, temperature, etc...)
   //Display Main Information
   const mim = mainInformation(currentCity);

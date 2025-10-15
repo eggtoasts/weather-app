@@ -17,7 +17,6 @@ export default function pressure(currentCity) {
   const low = 0;
   const high = 32;
 
-  console.log(pressureMarker);
   const movePressureMarker = function (deg) {
     pressureMarker.style.transform = `rotate(${
       -120 + (deg % 25.1) * 26.6666667

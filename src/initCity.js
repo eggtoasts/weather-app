@@ -33,7 +33,7 @@ function findMax(daysArray) {
 
 function apiHourToHourClass(hourQuery, currentDateTime) {
   return new Hour(
-    hourQuery.datetime || "Now",
+    hourQuery.datetime || currentDateTime,
     hourQuery.icon,
     Math.round(hourQuery.temp),
     hourQuery.humidity,

@@ -319,6 +319,7 @@ h3 {
 body {
   /* background: #2f91f4; */
 
+  /* Sunrise */
   background: linear-gradient(
     180deg,
     rgb(255, 137, 137) 20%,
@@ -405,6 +406,7 @@ body {
 
 .hour-item:hover {
   border: 1px solid rgb(255, 255, 255);
+  cursor: pointer;
 }
 
 .hour-item {

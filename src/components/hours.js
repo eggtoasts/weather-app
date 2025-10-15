@@ -16,7 +16,8 @@ export default function days(query, currentCity) {
 
     for (let i = 0; i < 24; i++) {
       const element = hoursArray[i];
-      const hourElement = createHourElement(query, element, null);
+      const hourElement = createHourElement(query, element, i === 0);
+
       hourlyContainer.append(hourElement);
     }
   };

@@ -15,6 +15,12 @@ export default function changeBackground(currentCity) {
 
     let gradient = "";
 
+    console.log(
+      `sunset Time: ${sunsetTime + 1} Curr hour: ${hour} sunrise Time: ${
+        sunsetTime - 1
+      }`
+    );
+
     if (sunsetTime + 1 >= hour && sunsetTime - 1 <= hour) {
       console.log("sunset");
       gradient = `linear-gradient(

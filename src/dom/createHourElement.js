@@ -18,7 +18,12 @@ export function createHourElement(query, currentHour, now) {
   hourTitle.classList.add("hour-title");
   hourTemp.setAttribute("class", "hour-temp deg");
 
-  hourTitle.textContent = convertTo12Hour(time);
+  if (now) {
+    hourTitle.textContent = "Now";
+  } else {
+    hourTitle.textContent = convertTo12Hour(time);
+  }
+
   hourTemp.textContent =
     settings.temperatureUnit === "C" ? convertToCelsius(temp) : temp;
 
@@ -26,15 +31,10 @@ export function createHourElement(query, currentHour, now) {
   hourItem.appendChild(hourIcon);
   hourItem.appendChild(hourTemp);
 
-  if (now) {
-    return hourItem;
-  }
-
   //Add event
   hourItem.addEventListener("click", (e) => {
     const currentCityHour = initCity(query, currentHour, 0);
     showDisplay(currentCityHour, query);
-    //works
   });
 
   return hourItem;

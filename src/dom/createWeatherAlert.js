@@ -3,6 +3,8 @@ export function createWeatherAlert(currentAlert, empty) {
   const alertTitle = document.createElement("h3");
   const alertDescription = document.createElement("h4");
   weatherAlertItem.classList.add("weather-alert-item");
+  alertTitle.classList.add("weather-alert-title");
+  alertDescription.classList.add("weather-alert-desc");
 
   //If empty, display that there are no alerts.
   if (empty) {

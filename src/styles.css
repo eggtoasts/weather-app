@@ -569,6 +569,10 @@ body {
   gap: 20px;
 }
 
+.weather-alert-title {
+  margin-bottom: 5px;
+}
+
 /* UV INDEX */
 
 .uv-index {

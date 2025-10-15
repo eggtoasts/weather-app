@@ -35,7 +35,7 @@ export default function mainScreen() {
   const errorPopup = document.querySelector(".invalid-city-pop-up");
 
   //Put up a default city.
-  let currentCity = "orlando";
+  let currentCity = "San Diego";
 
   getCity(currentCity);
   settingsButton.addEventListener("click", (e) => {

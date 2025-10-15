@@ -18,6 +18,7 @@ export default function changeBackground(currentCity) {
 
     let gradient = "";
     let circleColor = "";
+    let bgColor = "";
 
     console.log(
       `sunset Time: ${sunsetTime + 1} Curr hour: ${hour} sunrise Time: ${
@@ -50,6 +51,8 @@ export default function changeBackground(currentCity) {
     rgb(111, 199, 253) 100%
      )`;
       circleColor = "#65A0CF";
+
+      body.style[`background-color`] = circleColor;
       sun.classList.remove("hidden");
     } else {
       console.log("night");
@@ -60,6 +63,7 @@ export default function changeBackground(currentCity) {
     rgb(23, 22, 30) 100%
       )`;
       moon.classList.remove("hidden");
+      body.style[`background-color`] = circleColor;
     }
 
     body.style.background = gradient;

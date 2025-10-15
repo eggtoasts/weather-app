@@ -14,6 +14,9 @@ export default function mainScreen() {
 
   let data = "";
 
+  //Loading screen
+  const loadingScreen = document.querySelector(".loading-screen");
+
   //Settings dialog
   const closeButton = document.querySelector(".done-button");
   const settingsButton = document.querySelector(".settings");
@@ -103,11 +106,18 @@ export default function mainScreen() {
 
   async function getCity(query) {
     try {
+      loadingScreen.classList.remove("hidden");
       errorPopup.classList.add("hidden");
       let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
       const getCity = await fetch(apiLink);
+
+      console.log("Loading....");
+
       data = await getCity.json();
-      // const data = ripCafeWifiJSON;
+
+      //Stop displaying loading screen after we've recieved the data
+      loadingScreen.classList.add("hidden");
+      console.log(loadingScreen);
 
       try {
         console.log(data);
@@ -120,6 +130,7 @@ export default function mainScreen() {
     } catch (error) {
       console.log(error.stack + " Error, could not fetch city.");
       errorPopup.classList.remove("hidden");
+      loadingScreen.classList.add("hidden");
       return;
     }
   }

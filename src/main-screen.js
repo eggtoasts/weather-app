@@ -1,7 +1,6 @@
 import showDisplay from "./display-screen";
-import { API_KEY } from "./env";
-import { initCity } from "./initCity";
-import ripCafeWifiJSON from "./whenCafeWifiDies.json";
+
+import getCurrentCityLocation from "./apiHandling";
 
 import createCompass from "./sub-components/createCompass";
 import createPressureMeter from "./sub-components/createPressureMeter";
@@ -14,8 +13,10 @@ export default function mainScreen() {
 
   let data = "";
 
-  //Loading screen
-  const loadingScreen = document.querySelector(".loading-screen");
+  let currentCity = "";
+
+  //Gets city.
+  data = getCurrentCityLocation(currentCity);
 
   //Settings dialog
   const closeButton = document.querySelector(".done-button");
@@ -34,13 +35,6 @@ export default function mainScreen() {
   const precipInButton = document.querySelector(".precip.in");
   const precipMmButton = document.querySelector(".precip.mm");
 
-  //Error message
-  const errorPopup = document.querySelector(".invalid-city-pop-up");
-
-  //Put up a default city.
-  let currentCity = "San Diego";
-
-  getCity(currentCity);
   settingsButton.addEventListener("click", (e) => {
     if (!settingsDialog.classList.contains("hidden")) {
       settingsDialog.classList.add("hidden");
@@ -102,47 +96,5 @@ export default function mainScreen() {
   precipInButton.addEventListener("click", (e) => {
     settings.precipUnit = "in";
     showDisplay(currentCity, data);
-  });
-
-  async function getCity(query) {
-    try {
-      loadingScreen.classList.remove("hidden");
-      errorPopup.classList.add("hidden");
-      let apiLink = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${query}?unitGroup=us&key=${API_KEY}&contentType=json&elements=%2Baqius`;
-      const getCity = await fetch(apiLink);
-
-      console.log("Loading....");
-
-      data = await getCity.json();
-
-      //Stop displaying loading screen after we've recieved the data
-      loadingScreen.classList.add("hidden");
-      console.log(loadingScreen);
-
-      try {
-        console.log(data);
-        currentCity = initCity(data, null, 0);
-        console.log(currentCity);
-        showDisplay(currentCity, data);
-      } catch (error) {
-        console.log(error.stack + " " + "Could not create city.");
-      }
-    } catch (error) {
-      console.log(error.stack + " Error, could not fetch city.");
-      errorPopup.classList.remove("hidden");
-      loadingScreen.classList.add("hidden");
-      return;
-    }
-  }
-
-  //Add event listener to the query search.
-  const searchBar = document.querySelector("#search-query");
-
-  searchBar.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      console.log(e.target.value);
-      console.log("Enter.");
-      getCity(e.target.value);
-    }
   });
 }

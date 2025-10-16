@@ -27,18 +27,16 @@ function apiHandler(currentCity) {
   }
 
   //Put up a default city.
-  //Data is passed by reference.
-  async function getCurrentCityLocation(data) {
-    currentCity = await getLocation();
-    await getCity(currentCity, data);
+  async function getCurrentCityLocation() {
+    let location = await getLocation();
+    const { data, currentCity } = await getCity(location);
 
-    //Returns the data.
-    return data;
+    //Returns the data and current city.
+    return { data, currentCity };
   }
 
   // Weather API
-  async function getCity(query, data) {
-    console.log(query);
+  async function getCity(query) {
     try {
       loadingScreen.classList.remove("hidden");
       errorPopup.classList.add("hidden");
@@ -47,7 +45,7 @@ function apiHandler(currentCity) {
 
       console.log("Loading....");
 
-      data = await city.json();
+      const data = await city.json();
 
       //Stop displaying loading screen after we've recieved the data
       loadingScreen.classList.add("hidden");
@@ -58,6 +56,8 @@ function apiHandler(currentCity) {
         currentCity = initCity(data, null, 0);
         console.log(currentCity);
         showDisplay(currentCity, data);
+
+        return { data, currentCity };
       } catch (error) {
         console.log(error.stack + " " + "Could not create city.");
       }

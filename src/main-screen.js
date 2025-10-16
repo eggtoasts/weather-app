@@ -11,12 +11,18 @@ export default function mainScreen() {
   createCompass();
   createPressureMeter();
 
+  //Gets city.
   let data = "";
-
   let currentCity = "";
 
-  //Gets city.
-  data = getCurrentCityLocation(currentCity);
+  getDataAndCurrentCityLocation();
+
+  async function getDataAndCurrentCityLocation() {
+    const cityInfo = await getCurrentCityLocation();
+
+    data = cityInfo.data;
+    currentCity = cityInfo.currentCity;
+  }
 
   //Settings dialog
   const closeButton = document.querySelector(".done-button");
@@ -50,11 +56,13 @@ export default function mainScreen() {
   celsiusButton.addEventListener("click", (e) => {
     settings.temperatureUnit = "C";
     console.log(settings);
+
     showDisplay(currentCity, data);
   });
 
   fahrenheitButton.addEventListener("click", (e) => {
     settings.temperatureUnit = "F";
+    console.log(currentCity, data);
     showDisplay(currentCity, data);
   });
 

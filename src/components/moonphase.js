@@ -8,7 +8,7 @@ export default function moonPhase(currentCity) {
     if ((phase >= 0.0 && phase <= 0.03) || (phase >= 0.97 && phase <= 1.0)) {
       return "New Moon";
     } else if (phase >= 0.03 && phase <= 0.22) {
-      return "Waxing Cresent";
+      return "Waxing Crescent";
     } else if (phase >= 0.22 && phase <= 0.28) {
       return "First Quarter";
     } else if (phase >= 0.28 && phase <= 0.47) {
@@ -20,12 +20,13 @@ export default function moonPhase(currentCity) {
     } else if (phase >= 0.72 && phase <= 0.78) {
       return "Last Quarter";
     } else if (phase >= 0.78 && phase <= 0.97) {
-      return "Waning Cresent";
+      return "Waning Crescent";
     }
   };
 
   const update = function () {
     const phase = currentCity.moonPhase;
+
     const moonPhase = convertMoonPhase(phase);
     moonPhaseType.textContent = moonPhase;
 

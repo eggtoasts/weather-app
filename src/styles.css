@@ -638,6 +638,7 @@ body {
 
 .top-moon {
   position: absolute;
+  z-index: 100;
   color: rgb(186, 186, 186);
 }
 

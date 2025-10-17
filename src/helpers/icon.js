@@ -46,8 +46,8 @@ export function setMoonIcon(phaseType) {
     case "newMoon":
       topMoon.setAttribute("data-icon", "mdi-moon-new");
       break;
-    case "Waxing Cresent":
-      topMoon.setAttribute("data-icon", "mdi-moon-waxing-cresent");
+    case "Waxing Crescent":
+      topMoon.setAttribute("data-icon", "mdi-moon-waning-crescent");
       break;
     case "First Quarter":
       topMoon.setAttribute("data-icon", "mdi-moon-first-quarter");
@@ -62,11 +62,10 @@ export function setMoonIcon(phaseType) {
       topMoon.setAttribute("data-icon", "mdi-moon-waning-gibbous");
       break;
     case "Last Quarter":
-      console.log("br");
       topMoon.setAttribute("data-icon", "mdi-moon-last-quarter");
       break;
-    case "Waning Cresent":
-      topMoon.setAttribute("data-icon", "mdi-moon-waning-cresent");
+    case "Waning Crescent":
+      topMoon.setAttribute("data-icon", "mdi-moon-waning-crescent");
       break;
   }
   return topMoon;

@@ -4,7 +4,11 @@ A clean and detailed weather forecast application that provides real-time weathe
 
 ### [Live Demo](https://eggtoasts.github.io/weather-app/)
 
-![Screenshot 1](docs/image1.png) ![Screenshot 1](docs/image2.png) ![Screenshot 1](docs/image3.png)
+<p align="center">
+  <img src="docs/image1.png" width="250">
+  <img src="docs/image2.png" width="250">
+  <img src="docs/image3.png" width="250">
+</p>
 
 ## Key Features
 

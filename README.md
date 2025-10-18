@@ -5,9 +5,9 @@ A clean and detailed weather forecast application that provides real-time weathe
 ### [Live Demo](https://eggtoasts.github.io/weather-app/)
 
 <p align="center">
-  <img src="docs/image1.png" width="250">
-  <img src="docs/image2.png" width="250">
-  <img src="docs/image3.png" width="250">
+  <img src="docs/image1.png" height="150px" style="margin: 0 5px;">
+  <img src="docs/image2.png" height="150px" style="margin: 0 5px;">
+  <img src="docs/image3.png" height="150px" style="margin: 0 5px;">
 </p>
 
 ## Key Features

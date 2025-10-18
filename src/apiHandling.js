@@ -69,22 +69,11 @@ function apiHandler(currentCity) {
     }
   }
 
-  //Add event listener to the query search.
-  const searchBar = document.querySelector("#search-query");
-
-  searchBar.addEventListener("keypress", (e) => {
-    if (e.key === "Enter") {
-      console.log(e.target.value);
-      console.log("Enter.");
-      getCity(e.target.value);
-    }
-  });
-
-  return { getCurrentCityLocation };
+  return { getCurrentCityLocation, getCity };
 }
 
 const apiModule = apiHandler();
 
-const { getCurrentCityLocation } = apiModule;
+const { getCurrentCityLocation, getCity } = apiModule;
 
-export default getCurrentCityLocation;
+export { getCurrentCityLocation, getCity };

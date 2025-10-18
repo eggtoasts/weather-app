@@ -1,6 +1,6 @@
 import showDisplay from "./display-screen";
 
-import getCurrentCityLocation from "./apiHandling";
+import { getCurrentCityLocation, getCity } from "./apiHandling";
 
 import createCompass from "./sub-components/createCompass";
 import createPressureMeter from "./sub-components/createPressureMeter";
@@ -23,6 +23,19 @@ export default function mainScreen() {
     data = cityInfo.data;
     currentCity = cityInfo.currentCity;
   }
+
+  //Add event listener to the query search.
+  const searchBar = document.querySelector("#search-query");
+
+  searchBar.addEventListener("keypress", async (e) => {
+    if (e.key === "Enter") {
+      console.log(e.target.value);
+      console.log("Enter.");
+      const cityInfo = await getCity(e.target.value);
+      currentCity = cityInfo.currentCity;
+      data = cityInfo.data;
+    }
+  });
 
   //Settings dialog
   const closeButton = document.querySelector(".done-button");

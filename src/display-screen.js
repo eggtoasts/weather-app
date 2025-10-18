@@ -16,6 +16,7 @@ import sunriseSunset from "./components/sunrise-sunset";
 import average from "./components/average";
 import changeBackground from "./components/changeBackground";
 export default function showDisplay(currentCity, query) {
+  console.log(currentCity);
   //Change background based on time
   const cbm = changeBackground(currentCity);
   cbm.update();

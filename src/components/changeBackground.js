@@ -13,8 +13,8 @@ export default function changeBackground(currentCity) {
 
     const hour = Number(currHour.substring(0, 2));
 
-    moon.setAttribute("class", "moon hidden");
-    sun.setAttribute("class", "sun hidden");
+    moon.setAttribute("class", "moon hidden safari_only");
+    sun.setAttribute("class", "sun hidden safari_only");
 
     let gradient = "";
     let circleColor = "";
